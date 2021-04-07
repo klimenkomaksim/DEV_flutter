@@ -11,7 +11,7 @@ class TagFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppSkeleton(
-      title: 'Feed',
+      title: 'Tags',
       appBody: ListView(
         children: tagData.map(
           (tag) => TagCard(

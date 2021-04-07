@@ -11,7 +11,7 @@ class PodcastFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppSkeleton(
-      title: 'Feed',
+      title: 'Podcast',
       appBody: ListView(
         children: podcastData.map(
           (podcast) => PodcastPreview(
