@@ -5,13 +5,13 @@ import 'reaction.dart';
 
 class PostFooter extends StatelessWidget {
   const PostFooter({
-    @required this.likes,
-    @required this.comments,
-    Key key,
+    required this.likes,
+    required this.comments,
+    Key? key,
   }) : super(key: key);
 
-  final int likes;
-  final int comments;
+  final int? likes;
+  final int? comments;
 
   @override
   Widget build(BuildContext context) {

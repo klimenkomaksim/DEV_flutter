@@ -6,15 +6,15 @@ import 'podcast_preview_body.dart';
 
 class PodcastPreview extends StatelessWidget {
   const PodcastPreview({
-    @required this.episodeTitle,
-    @required this.imageUrl,
-    @required this.podcastName,
-    Key key,
+    required this.episodeTitle,
+    required this.imageUrl,
+    required this.podcastName,
+    Key? key,
   }) : super(key: key);
 
-  final String episodeTitle;
-  final String podcastName;
-  final String imageUrl;
+  final String? episodeTitle;
+  final String? podcastName;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {

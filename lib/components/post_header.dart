@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 
 class PostHeader extends StatelessWidget {
   const PostHeader({
-    @required this.avatarUrl,
-    @required this.username,
-    @required this.postDate,
-    Key key,
+    required this.avatarUrl,
+    required this.username,
+    required this.postDate,
+    Key? key,
   }) : super(key: key);
 
-  final String avatarUrl;
-  final String username;
-  final String postDate;
+  final String? avatarUrl;
+  final String? username;
+  final String? postDate;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         CircleAvatar(
-          backgroundImage: NetworkImage(avatarUrl),
+          backgroundImage: NetworkImage(avatarUrl!),
           radius: 16,
         ),
         const SizedBox(width: 8),
@@ -27,13 +27,13 @@ class PostHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              username,
-              style: Theme.of(context).textTheme.bodyText2.copyWith(
+              username!,
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(
                 color: CustomColors.tertiaryText
               ),
             ),
             Text(
-              postDate,
+              postDate!,
               style: Theme.of(context).textTheme.overline,
             ),
           ],

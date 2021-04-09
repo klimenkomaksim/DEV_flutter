@@ -4,13 +4,13 @@ import 'podcast_title.dart';
 
 class PodcastPreviewBody extends StatelessWidget {
   const PodcastPreviewBody({
-    @required this.episodeTitle,
-    @required this.podcastName,
-    Key key,
+    required this.episodeTitle,
+    required this.podcastName,
+    Key? key,
   }) : super(key: key);
 
-  final String episodeTitle;
-  final String podcastName;
+  final String? episodeTitle;
+  final String? podcastName;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class PodcastPreviewBody extends StatelessWidget {
             PodcastTitle(episodeTitle: episodeTitle),
             const SizedBox(height: 16),
             Text(
-              podcastName,
+              podcastName!,
               style: Theme.of(context).textTheme.bodyText2,
             )
           ],

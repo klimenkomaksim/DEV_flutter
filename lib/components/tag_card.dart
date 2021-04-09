@@ -6,13 +6,13 @@ import 'tag_title.dart';
 
 class TagCard extends StatelessWidget {
   const TagCard({
-    @required this.tagColor,
-    @required this.tagName,
-    Key key,
+    required this.tagColor,
+    required this.tagName,
+    Key? key,
   }) : super(key: key);
 
-  final String tagName;
-  final int tagColor;
+  final String? tagName;
+  final int? tagColor;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class TagCard extends StatelessWidget {
           children: [
             Container(
               height: 16,
-              color: Color(tagColor),
+              color: Color(tagColor!),
             ),
             Padding(
               padding: const EdgeInsets.all(16),

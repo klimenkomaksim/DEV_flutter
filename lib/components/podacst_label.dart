@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class PodcastLabel extends StatelessWidget {
   const PodcastLabel({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -29,7 +29,7 @@ class PodcastLabel extends StatelessWidget {
   Text getLabelText(BuildContext context) {
     return Text(
       'podcast',
-      style: Theme.of(context).textTheme.bodyText1.copyWith(
+      style: Theme.of(context).textTheme.bodyText1!.copyWith(
         color: Colors.white,
         fontWeight: FontWeight.w700,
       )

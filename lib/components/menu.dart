@@ -12,7 +12,7 @@ const menu = [
 
 class Menu extends StatelessWidget {
   const Menu({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

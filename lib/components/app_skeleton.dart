@@ -5,9 +5,9 @@ import 'menu_button.dart';
 
 class AppSkeleton extends StatelessWidget {
   const AppSkeleton({
-    @required this.title,
-    @required this.appBody,
-    Key key,
+    required this.title,
+    required this.appBody,
+    Key? key,
   }) : super(key: key);
 
   final String title;

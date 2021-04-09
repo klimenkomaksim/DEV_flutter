@@ -5,17 +5,17 @@ import 'video_preview.dart';
 
 class VideoPostPreview extends StatelessWidget {
   const VideoPostPreview({
-    @required this.title,
-    @required this.duration,
-    @required this.author,
-    @required this.imageUrl,
-    Key key,
+    required this.title,
+    required this.duration,
+    required this.author,
+    required this.imageUrl,
+    Key? key,
   }) : super(key: key);
 
-  final String title;
-  final String duration;
-  final String author;
-  final String imageUrl;
+  final String? title;
+  final String? duration;
+  final String? author;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +33,14 @@ class VideoPostPreview extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
             child: Text(
-              title,
+              title!,
               style: Theme.of(context).textTheme.headline4,
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
             child: Text(
-              author,
+              author!,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           )

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class TagFeedScreen extends StatelessWidget {
   const TagFeedScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -15,8 +15,8 @@ class TagFeedScreen extends StatelessWidget {
       appBody: ListView(
         children: tagData.map(
           (tag) => TagCard(
-            tagColor: tag['tagColor'],
-            tagName: tag['tagName']
+            tagColor: tag['tagColor'] as int?,
+            tagName: tag['tagName'] as String?
           )
         ).toList(),
       ),

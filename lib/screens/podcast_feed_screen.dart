@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class PodcastFeedScreen extends StatelessWidget {
   const PodcastFeedScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

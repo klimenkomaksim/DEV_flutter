@@ -4,12 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class Reaction extends StatelessWidget {
   const Reaction({
-    @required this.reactionCount,
-    @required this.svgPath,
-    Key key,
+    required this.reactionCount,
+    required this.svgPath,
+    Key? key,
   }) : super(key: key);
 
-  final int reactionCount;
+  final int? reactionCount;
   final String svgPath;
 
   @override
@@ -28,7 +28,7 @@ class Reaction extends StatelessWidget {
           ),
           Text(
             reactionCount.toString(),
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
               color: CustomColors.reactionText,
               height: 1.3,
             ),

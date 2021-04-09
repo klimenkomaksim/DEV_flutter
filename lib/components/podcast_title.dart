@@ -4,11 +4,11 @@ import 'podacst_label.dart';
 
 class PodcastTitle extends StatelessWidget {
   const PodcastTitle({
-    @required this.episodeTitle,
-    Key key,
+    required this.episodeTitle,
+    Key? key,
   }) : super(key: key);
 
-  final String episodeTitle;
+  final String? episodeTitle;
 
   @override
   Widget build(BuildContext context) {

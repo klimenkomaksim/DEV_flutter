@@ -7,23 +7,23 @@ import 'post_title.dart';
 import 'tag.dart';
 
 class PostPreview extends StatelessWidget {
-  final String username;
-  final String avatarUrl;
-  final String postDate;
-  final String title;
-  final List<String> tags;
-  final int likes;
-  final int comments;
+  final String? username;
+  final String? avatarUrl;
+  final String? postDate;
+  final String? title;
+  final List<String>? tags;
+  final int? likes;
+  final int? comments;
 
   const PostPreview({
-    @required this.username,
-    @required this.avatarUrl,
-    @required this.postDate,
-    @required this.title,
-    @required this.tags,
-    @required this.likes,
-    @required this.comments,
-    Key key,
+    required this.username,
+    required this.avatarUrl,
+    required this.postDate,
+    required this.title,
+    required this.tags,
+    required this.likes,
+    required this.comments,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -48,7 +48,7 @@ class PostPreview extends StatelessWidget {
           PostTitle(title: title),
           const SizedBox(height: 4),
           Row(
-            children: tags
+            children: tags!
                 .map(
                   (tag) => Tag(tag: tag),
                 )

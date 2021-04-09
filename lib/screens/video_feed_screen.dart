@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class VideoFeedScreen extends StatelessWidget {
   const VideoFeedScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

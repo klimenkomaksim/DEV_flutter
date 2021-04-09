@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class PostFeedScreen extends StatelessWidget {
   const PostFeedScreen({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -17,13 +17,13 @@ class PostFeedScreen extends StatelessWidget {
         children: postData
             .map(
               (post) => PostPreview(
-                username: post['username'],
-                avatarUrl: post['avatarUrl'],
-                postDate: post['postDate'],
-                title: post['title'],
-                tags: post['tags'],
-                likes: post['likes'],
-                comments: post['comments'],
+                username: post['username'] as String?,
+                avatarUrl: post['avatarUrl'] as String?,
+                postDate: post['postDate'] as String?,
+                title: post['title'] as String?,
+                tags: post['tags'] as List<String>?,
+                likes: post['likes'] as int?,
+                comments: post['comments'] as int?,
               ),
             )
             .toList(),

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class MenuButton extends StatelessWidget {
   const MenuButton({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
