@@ -6,12 +6,12 @@ import 'menu_button.dart';
 class AppSkeleton extends StatelessWidget {
   const AppSkeleton({
     required this.title,
-    required this.appBody,
+    required this.child,
     Key? key,
   }) : super(key: key);
 
   final String title;
-  final Widget appBody;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class AppSkeleton extends StatelessWidget {
         leading: const MenuButton(),
       ),
       drawer: const Menu(),
-      body: appBody,
+      body: child,
     );
   }
 }

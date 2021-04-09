@@ -12,15 +12,15 @@ class VideoFeedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppSkeleton(
       title: 'Video',
-      appBody: ListView(
-        children: videoData.map(
-          (video) => VideoPostPreview(
-            title: video['title'],
-            duration: video['duration'],
-            author: video['author'],
-            imageUrl: video['imageUrl'],
-          )
-        ).toList(),
+      child: ListView(
+        children: videoData
+            .map((video) => VideoPostPreview(
+                  title: video['title'],
+                  duration: video['duration'],
+                  author: video['author'],
+                  imageUrl: video['imageUrl'],
+                ))
+            .toList(),
       ),
     );
   }

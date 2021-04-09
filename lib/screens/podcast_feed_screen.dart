@@ -12,17 +12,15 @@ class PodcastFeedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppSkeleton(
       title: 'Podcast',
-      appBody: ListView(
-        children: podcastData.map(
-          (podcast) => PodcastPreview(
-            episodeTitle: podcast['episodeTitle'],
-            imageUrl: podcast['imageUrl'],
-            podcastName: podcast['podcastName'],
-          )
-        ).toList(),
+      child: ListView(
+        children: podcastData
+            .map((podcast) => PodcastPreview(
+                  episodeTitle: podcast['episodeTitle'],
+                  imageUrl: podcast['imageUrl'],
+                  podcastName: podcast['podcastName'],
+                ))
+            .toList(),
       ),
     );
   }
 }
-
-

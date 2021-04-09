@@ -12,13 +12,12 @@ class TagFeedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppSkeleton(
       title: 'Tags',
-      appBody: ListView(
-        children: tagData.map(
-          (tag) => TagCard(
-            tagColor: tag['tagColor'] as int?,
-            tagName: tag['tagName'] as String?
-          )
-        ).toList(),
+      child: ListView(
+        children: tagData
+            .map((tag) => TagCard(
+                tagColor: tag['tagColor'] as int?,
+                tagName: tag['tagName'] as String?))
+            .toList(),
       ),
     );
   }

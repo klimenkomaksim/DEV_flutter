@@ -13,7 +13,7 @@ class PostFeedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppSkeleton(
       title: 'Feed',
-      appBody: ListView(
+      child: ListView(
         children: postData
             .map(
               (post) => PostPreview(
