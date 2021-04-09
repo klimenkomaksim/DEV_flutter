@@ -1,3 +1,4 @@
+import 'package:dev_flutter/theme/border_radius.dart';
 import 'package:dev_flutter/theme/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class PodcastLabel extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: CustomColors.podactLabel,
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: CustomBorderRadius.radius,
       ),
       margin: const EdgeInsets.only(right: 5, top: 3),
       padding: const EdgeInsets.symmetric(horizontal: 4),

@@ -1,3 +1,4 @@
+import 'package:dev_flutter/theme/border_radius.dart';
 import 'package:dev_flutter/theme/borders.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +21,10 @@ class TagCard extends StatelessWidget {
       margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: CustomBorderRadius.radius,
           border: CustomBorder.allBorder),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: CustomBorderRadius.radius,
         child: Column(
           children: [
             Container(height: 16, color: Color(tagColor!)),
