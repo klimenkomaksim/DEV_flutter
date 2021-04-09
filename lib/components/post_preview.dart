@@ -38,27 +38,17 @@ class PostPreview extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
+        children: [
           PostHeader(
-            avatarUrl: avatarUrl,
-            username: username,
-            postDate: postDate
-          ),
+              avatarUrl: avatarUrl, username: username, postDate: postDate),
           const SizedBox(height: 12),
           PostTitle(title: title),
           const SizedBox(height: 4),
           Row(
-            children: tags!
-                .map(
-                  (tag) => Tag(tag: tag),
-                )
-                .toList(),
+            children: tags!.map((tag) => Tag(tag: tag)).toList(),
           ),
           const SizedBox(height: 8),
-          PostFooter(
-            likes: likes,
-            comments: comments
-          ),
+          PostFooter(likes: likes, comments: comments),
         ],
       ),
     );
