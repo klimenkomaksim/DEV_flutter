@@ -16,17 +16,10 @@ class PostFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Row(
-          children: [
-            Reaction(reactionCount: likes, svgPath: 'images/heart.svg'),
-            Reaction(
-                reactionCount: comments, svgPath: 'images/comment.svg'),
-          ],
-        ),
+        Reaction(reactionCount: likes, svgPath: 'images/heart.svg'),
+        Reaction(reactionCount: comments, svgPath: 'images/comment.svg'),
+        const Spacer(),
         Button(
           title: 'Open',
           onPress: () {},
