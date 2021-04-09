@@ -25,8 +25,13 @@ class PodcastPreview extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           PodcastImage(url: imageUrl),
-          PodcastPreviewBody(
-              episodeTitle: episodeTitle, podcastName: podcastName),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+              child: PodcastPreviewBody(
+                  episodeTitle: episodeTitle, podcastName: podcastName),
+            ),
+          ),
         ],
       ),
     );

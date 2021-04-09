@@ -18,13 +18,10 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        children: [
-          const MenuHeader(),
-          ...menu.map((item) =>
-              MenuItem(title: item['title'], svgName: item['svgName']))
-        ],
-      ),
-    );
+        child: ListView(children: [
+      const MenuHeader(),
+      ...menu.map(
+          (item) => MenuItem(title: item['title'], svgName: item['svgName']))
+    ]));
   }
 }
