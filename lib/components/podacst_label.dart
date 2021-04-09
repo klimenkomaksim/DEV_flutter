@@ -8,8 +8,6 @@ class PodcastLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final labelText = getLabelText(context);
-    
     return Container(
       width: 80,
       alignment: Alignment.center,
@@ -17,22 +15,20 @@ class PodcastLabel extends StatelessWidget {
         color: CustomColors.podactLabel,
         borderRadius: BorderRadius.circular(4),
       ),
-      margin: const EdgeInsets.only(
-        right: 5,
-        top: 3,
-      ),
-      padding: const EdgeInsets.symmetric(horizontal:  4),
-      child: labelText,
+      margin: const EdgeInsets.only(right: 5, top: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: _PodcastLabelText(),
     );
   }
+}
 
-  Text getLabelText(BuildContext context) {
-    return Text(
-      'podcast',
-      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-        color: Colors.white,
-        fontWeight: FontWeight.w700,
-      )
-    );
+class _PodcastLabelText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text('podcast',
+        style: Theme.of(context)
+            .textTheme
+            .bodyText1!
+            .copyWith(color: Colors.white, fontWeight: FontWeight.w700));
   }
 }
