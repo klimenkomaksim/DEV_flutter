@@ -3,11 +3,11 @@ import 'menu_header.dart';
 import 'menu_item.dart';
 
 const menu = [
-  { 'title': 'Home', 'svgName': 'home'},
-  { 'title': 'Litstings', 'svgName': 'listings'},
-  { 'title': 'Podcasts', 'svgName': 'podcast'},
-  { 'title': 'Video', 'svgName': 'video'},
-  { 'title': 'Tags', 'svgName': 'tag'},
+  {'title': 'Home', 'svgName': 'home'},
+  {'title': 'Litstings', 'svgName': 'listings'},
+  {'title': 'Podcasts', 'svgName': 'podcast'},
+  {'title': 'Video', 'svgName': 'video'},
+  {'title': 'Tags', 'svgName': 'tag'},
 ];
 
 class Menu extends StatelessWidget {
@@ -21,12 +21,8 @@ class Menu extends StatelessWidget {
       child: ListView(
         children: [
           const MenuHeader(),
-          ...menu.map(
-            (item) => MenuItem(
-              title: item['title'],
-              svgName: item['svgName']
-            )
-          ).toList()
+          ...menu.map((item) =>
+              MenuItem(title: item['title'], svgName: item['svgName']))
         ],
       ),
     );
