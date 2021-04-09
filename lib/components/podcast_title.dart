@@ -13,19 +13,14 @@ class PodcastTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
-      text: TextSpan(
-        children: [
-          const WidgetSpan(
+      text: TextSpan(children: [
+        const WidgetSpan(
             baseline: TextBaseline.alphabetic,
             alignment: PlaceholderAlignment.baseline,
-            child: PodcastLabel(),
-          ),
-          TextSpan(
-            text: episodeTitle,
-            style: Theme.of(context).textTheme.headline3,
-          )
-        ]
-      ),
+            child: PodcastLabel()),
+        TextSpan(
+            text: episodeTitle, style: Theme.of(context).textTheme.headline3)
+      ]),
     );
   }
 }

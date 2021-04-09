@@ -22,10 +22,7 @@ class PodcastPreviewBody extends StatelessWidget {
           children: [
             PodcastTitle(episodeTitle: episodeTitle),
             const SizedBox(height: 16),
-            Text(
-              podcastName!,
-              style: Theme.of(context).textTheme.bodyText2,
-            )
+            Text(podcastName!, style: Theme.of(context).textTheme.bodyText2)
           ],
         ),
       ),

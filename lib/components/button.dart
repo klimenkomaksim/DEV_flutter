@@ -6,7 +6,7 @@ class Button extends StatelessWidget {
     required this.title,
     Key? key,
   }) : super(key: key);
-  
+
   final Function onPress;
   final String title;
 

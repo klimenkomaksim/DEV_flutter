@@ -20,10 +20,7 @@ class PostFooter extends StatelessWidget {
         Reaction(reactionCount: likes, svgPath: 'images/heart.svg'),
         Reaction(reactionCount: comments, svgPath: 'images/comment.svg'),
         const Spacer(),
-        Button(
-          title: 'Open',
-          onPress: () {},
-        ),
+        Button(title: 'Open', onPress: () {}),
       ],
     );
   }

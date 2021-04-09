@@ -18,9 +18,10 @@ class MenuItem extends StatelessWidget {
       leading: SvgPicture.asset('images/$svgName.svg'),
       title: Text(
         title!,
-        style: Theme.of(context).textTheme.bodyText1!.copyWith(
-          color: CustomColors.primaryText,
-        ),
+        style: Theme.of(context)
+            .textTheme
+            .bodyText1!
+            .copyWith(color: CustomColors.primaryText),
       ),
     );
   }

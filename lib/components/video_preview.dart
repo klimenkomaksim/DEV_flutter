@@ -18,15 +18,13 @@ class VideoPreview extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(5, 2, 5, 3),
         margin: const EdgeInsets.only(bottom: 10, right: 6),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(3),
-          color: Colors.black.withOpacity(0.8),
-        ),
-        child: Text(
-          duration!,
-          style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                color: Colors.white,
-              ),
-        ),
+            borderRadius: BorderRadius.circular(3),
+            color: Colors.black.withOpacity(0.8)),
+        child: Text(duration!,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: Colors.white)),
       )
     ]);
   }

@@ -32,9 +32,7 @@ class PostPreview extends StatelessWidget {
       margin: const EdgeInsets.only(top: 8),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: CustomBorder.horizontalBorder,
-      ),
+          color: Colors.white, border: CustomBorder.horizontalBorder),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -44,9 +42,7 @@ class PostPreview extends StatelessWidget {
           const SizedBox(height: 12),
           PostTitle(title: title),
           const SizedBox(height: 4),
-          Row(
-            children: tags!.map((tag) => Tag(tag: tag)).toList(),
-          ),
+          Row(children: tags!.map((tag) => Tag(tag: tag)).toList()),
           const SizedBox(height: 8),
           PostFooter(likes: likes, comments: comments),
         ],

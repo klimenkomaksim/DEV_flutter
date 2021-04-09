@@ -14,10 +14,7 @@ class MenuButton extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-        child: SvgPicture.asset(
-          'images/menu_button.svg',
-          width: 24,
-        ),
+        child: SvgPicture.asset('images/menu_button.svg', width: 24),
       ),
     );
   }

@@ -19,31 +19,23 @@ class TagCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(6),
-        border: CustomBorder.allBorder,
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(6),
+          border: CustomBorder.allBorder),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(6),
         child: Column(
           children: [
-            Container(
-              height: 16,
-              color: Color(tagColor!),
-            ),
+            Container(height: 16, color: Color(tagColor!)),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  TagTitle(tagName: tagName),
-                  Button(
-                    title: 'Open',
-                    onPress: () {},
-                  ),
-                ],
-              ),
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    TagTitle(tagName: tagName),
+                    Button(title: 'Open', onPress: () {}),
+                  ]),
             )
           ],
         ),

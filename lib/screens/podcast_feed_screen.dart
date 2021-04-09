@@ -13,14 +13,13 @@ class PodcastFeedScreen extends StatelessWidget {
     return AppSkeleton(
       title: 'Podcast',
       child: ListView(
-        children: podcastData
-            .map((podcast) => PodcastPreview(
-                  episodeTitle: podcast['episodeTitle'],
-                  imageUrl: podcast['imageUrl'],
-                  podcastName: podcast['podcastName'],
-                ))
-            .toList(),
-      ),
+          children: podcastData
+              .map((podcast) => PodcastPreview(
+                    episodeTitle: podcast['episodeTitle'],
+                    imageUrl: podcast['imageUrl'],
+                    podcastName: podcast['podcastName'],
+                  ))
+              .toList()),
     );
   }
 }

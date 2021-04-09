@@ -10,13 +10,10 @@ class MenuHeader extends StatelessWidget {
     return SizedBox(
       height: 60,
       child: DrawerHeader(
-        margin: const EdgeInsets.all(12),
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Text(
-          'DEV Community',
-          style: Theme.of(context).textTheme.headline3,
-        )
-      ),
+          margin: const EdgeInsets.all(12),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text('DEV Community',
+              style: Theme.of(context).textTheme.headline3)),
     );
   }
 }

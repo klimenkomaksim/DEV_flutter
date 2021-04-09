@@ -20,17 +20,13 @@ class PodcastPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: CustomBorder.horizontalBorder,
-      ),
+          color: Colors.white, border: CustomBorder.horizontalBorder),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           PodcastImage(url: imageUrl),
           PodcastPreviewBody(
-            episodeTitle: episodeTitle,
-            podcastName: podcastName
-          ),
+              episodeTitle: episodeTitle, podcastName: podcastName),
         ],
       ),
     );
