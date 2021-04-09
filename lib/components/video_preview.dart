@@ -12,27 +12,22 @@ class VideoPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: AlignmentDirectional.bottomEnd,
-      children: [
-        Image(
-          image: NetworkImage(imageUrl!)
+    return Stack(alignment: AlignmentDirectional.bottomEnd, children: [
+      Image(image: NetworkImage(imageUrl!)),
+      Container(
+        padding: const EdgeInsets.fromLTRB(5, 2, 5, 3),
+        margin: const EdgeInsets.only(bottom: 10, right: 6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(3),
+          color: Colors.black.withOpacity(0.8),
         ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(5, 2, 5, 3),
-          margin: const EdgeInsets.only(bottom: 10, right: 6),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(3),
-            color: const Color.fromRGBO(0, 0, 0, 0.8),
-          ),
-          child: Text(
-            duration!,
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-              color: Colors.white,
-            ),
-          ),
-        )
-      ]
-    );
+        child: Text(
+          duration!,
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                color: Colors.white,
+              ),
+        ),
+      )
+    ]);
   }
 }
