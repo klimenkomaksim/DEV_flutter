@@ -10,17 +10,22 @@ class CustomTheme {
         primaryColor: Colors.white,
         textTheme: TextTheme(
           headline1: TextStyle(
+              fontSize: 30,
+              height: 1.25,
+              fontWeight: FontWeight.w700,
+              color: CustomColors.primaryText),
+          headline2: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
               color: CustomColors.primaryText),
-          headline2: const TextStyle(
+          headline3: const TextStyle(
               fontSize: 22, height: 1.3, fontWeight: FontWeight.w700),
-          headline3: TextStyle(
+          headline4: TextStyle(
               fontSize: 20,
               height: 1.25,
               fontWeight: FontWeight.w700,
               color: CustomColors.primaryText),
-          headline4: TextStyle(
+          headline5: TextStyle(
               height: 1.5,
               fontSize: 18,
               fontWeight: FontWeight.w700,
