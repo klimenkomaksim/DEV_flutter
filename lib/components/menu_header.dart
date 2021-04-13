@@ -13,7 +13,7 @@ class MenuHeader extends StatelessWidget {
           margin: const EdgeInsets.all(12),
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text('DEV Community',
-              style: Theme.of(context).textTheme.headline3)),
+              style: Theme.of(context).textTheme.headline4)),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:dev_flutter/consts/app_routes.dart';
 import 'package:dev_flutter/theme/border_radius.dart';
 import 'package:dev_flutter/theme/borders.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class TagCard extends StatelessWidget {
   }) : super(key: key);
 
   final String? tagName;
-  final int? tagColor;
+  final Color? tagColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class TagCard extends StatelessWidget {
         borderRadius: CustomBorderRadius.radius,
         child: Column(
           children: [
-            Container(height: 16, color: Color(tagColor!)),
+            Container(height: 16, color: tagColor),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
@@ -35,7 +36,12 @@ class TagCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     TagTitle(tagName: tagName),
-                    Button(title: 'Open', onPress: () {}),
+                    Button(
+                        title: 'Open',
+                        onPress: () {
+                          Navigator.pushNamed(context, AppRoutes.postFeedPage,
+                              arguments: tagName);
+                        }),
                   ]),
             )
           ],

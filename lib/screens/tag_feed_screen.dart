@@ -14,9 +14,8 @@ class TagFeedScreen extends StatelessWidget {
         title: 'Tags',
         child: ListView(
             children: tagData
-                .map((tag) => TagCard(
-                    tagColor: tag['tagColor'] as int?,
-                    tagName: tag['tagName'] as String?))
+                .map((tag) =>
+                    TagCard(tagColor: tag.backgroundColor, tagName: tag.name))
                 .toList()));
   }
 }

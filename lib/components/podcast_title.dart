@@ -19,7 +19,7 @@ class PodcastTitle extends StatelessWidget {
             alignment: PlaceholderAlignment.baseline,
             child: PodcastLabel()),
         TextSpan(
-            text: episodeTitle, style: Theme.of(context).textTheme.headline3)
+            text: episodeTitle, style: Theme.of(context).textTheme.headline4)
       ]),
     );
   }

@@ -2,7 +2,7 @@ import 'package:dev_flutter/theme/borders.dart';
 import 'package:flutter/material.dart';
 
 import 'post_footer.dart';
-import 'post_header.dart';
+import 'post_preview_header.dart';
 import 'post_title.dart';
 import 'tag.dart';
 
@@ -37,14 +37,14 @@ class PostPreview extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          PostHeader(
+          PostPreviewHeader(
               avatarUrl: avatarUrl, username: username, postDate: postDate),
           const SizedBox(height: 12),
           PostTitle(title: title),
           const SizedBox(height: 4),
           Row(children: tags!.map((tag) => Tag(tag: tag)).toList()),
           const SizedBox(height: 8),
-          PostFooter(likes: likes, comments: comments),
+          PostFooter(likes: likes!, comments: comments!),
         ],
       ),
     );

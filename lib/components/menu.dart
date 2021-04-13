@@ -1,14 +1,7 @@
+import 'package:dev_flutter/consts/menu_item_data.dart';
 import 'package:flutter/material.dart';
 import 'menu_header.dart';
 import 'menu_item.dart';
-
-const menu = [
-  {'title': 'Home', 'svgName': 'home'},
-  {'title': 'Litstings', 'svgName': 'listings'},
-  {'title': 'Podcasts', 'svgName': 'podcast'},
-  {'title': 'Video', 'svgName': 'video'},
-  {'title': 'Tags', 'svgName': 'tag'},
-];
 
 class Menu extends StatelessWidget {
   const Menu({
@@ -20,8 +13,8 @@ class Menu extends StatelessWidget {
     return Drawer(
         child: ListView(children: [
       const MenuHeader(),
-      ...menu.map(
-          (item) => MenuItem(title: item['title'], svgName: item['svgName']))
+      ...menuItemsData.map((item) => MenuItem(
+          name: item.name, svgPath: item.svgPath, routeName: item.routeName))
     ]));
   }
 }

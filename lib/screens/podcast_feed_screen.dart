@@ -15,9 +15,9 @@ class PodcastFeedScreen extends StatelessWidget {
       child: ListView(
           children: podcastData
               .map((podcast) => PodcastPreview(
-                    episodeTitle: podcast['episodeTitle'],
-                    imageUrl: podcast['imageUrl'],
-                    podcastName: podcast['podcastName'],
+                    episodeTitle: podcast.episodeTitle,
+                    imageUrl: podcast.podcastImageUrl,
+                    podcastName: podcast.podcastTitle,
                   ))
               .toList()),
     );

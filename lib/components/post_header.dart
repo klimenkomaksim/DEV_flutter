@@ -1,37 +1,41 @@
 import 'package:dev_flutter/theme/colors.dart';
 import 'package:flutter/material.dart';
 
-class PostHeader extends StatelessWidget {
-  const PostHeader({
-    required this.avatarUrl,
-    required this.username,
-    required this.postDate,
-    Key? key,
-  }) : super(key: key);
+import 'tag.dart';
 
-  final String? avatarUrl;
-  final String? username;
-  final String? postDate;
+class PostHeader extends StatelessWidget {
+  const PostHeader(
+      {required this.title,
+      required this.profileImageUrl,
+      required this.username,
+      required this.publishDate,
+      required this.tags,
+      Key? key})
+      : super(key: key);
+
+  final String title;
+  final String profileImageUrl;
+  final String username;
+  final String publishDate;
+  final List<String> tags;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CircleAvatar(backgroundImage: NetworkImage(avatarUrl!), radius: 16),
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(title, style: Theme.of(context).textTheme.headline1),
+      Wrap(children: tags.map((tag) => Tag(tag: tag)).toList()),
+      const SizedBox(height: 16),
+      Row(children: [
+        CircleAvatar(
+            backgroundImage: NetworkImage(profileImageUrl), radius: 16),
         const SizedBox(width: 8),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(username!,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText2!
-                    .copyWith(color: CustomColors.tertiaryText)),
-            Text(postDate!, style: Theme.of(context).textTheme.overline),
-          ],
-        )
-      ],
-    );
+        Text(username,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: CustomColors.primaryText)),
+        Text('・$publishDate')
+      ])
+    ]);
   }
 }

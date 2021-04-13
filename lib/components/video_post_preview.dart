@@ -31,7 +31,7 @@ class VideoPostPreview extends StatelessWidget {
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
               child:
-                  Text(title!, style: Theme.of(context).textTheme.headline4)),
+                  Text(title!, style: Theme.of(context).textTheme.headline5)),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
               child:

@@ -1,6 +1,6 @@
 import 'package:dev_flutter/components/app_skeleton.dart';
 import 'package:dev_flutter/components/post_preview.dart';
-import 'package:dev_flutter/temporary/post_data.dart';
+import 'package:dev_flutter/temporary/post_feed_data.dart';
 
 import 'package:flutter/material.dart';
 
@@ -11,18 +11,20 @@ class PostFeedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pageTitle = ModalRoute.of(context)!.settings.arguments as String?;
+
     return AppSkeleton(
-      title: 'Feed',
+      title: pageTitle ?? 'Feed',
       child: ListView(
-          children: postData
+          children: postFeedData
               .map((post) => PostPreview(
-                    username: post['username'] as String?,
-                    avatarUrl: post['avatarUrl'] as String?,
-                    postDate: post['postDate'] as String?,
-                    title: post['title'] as String?,
-                    tags: post['tags'] as List<String>?,
-                    likes: post['likes'] as int?,
-                    comments: post['comments'] as int?,
+                    username: post.username,
+                    avatarUrl: post.profileImage,
+                    comments: post.commentsCount as int,
+                    likes: post.likesCount as int,
+                    postDate: post.publishDate,
+                    tags: post.tags,
+                    title: post.title,
                   ))
               .toList()),
     );
