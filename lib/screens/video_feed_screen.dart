@@ -15,11 +15,10 @@ class VideoFeedScreen extends StatelessWidget {
         child: ListView(
             children: videoData
                 .map((video) => VideoPostPreview(
-                      title: video.title,
-                      duration: video.duration,
-                      author: video.author,
-                      imageUrl: video.videoPrevieImageUrl,
-                    ))
+                    title: video.title,
+                    duration: video.duration,
+                    author: video.author,
+                    imageUrl: video.videoPrevieImageUrl))
                 .toList()));
   }
 }

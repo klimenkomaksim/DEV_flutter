@@ -12,18 +12,16 @@ class ListingFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppSkeleton(
-      title: 'Listings',
-      child: ListView(
-          children: listingsData
-              .map((listing) => ListingPreview(
+        title: 'Listings',
+        child: ListView(
+            children: listingsData
+                .map((listing) => ListingPreview(
                     title: listing.title,
                     data: listing.processedHtml,
                     category: listing.category,
                     tags: listing.tags,
                     profileImage: listing.profileImage,
-                    username: listing.username,
-                  ))
-              .toList()),
-    );
+                    username: listing.username))
+                .toList()));
   }
 }

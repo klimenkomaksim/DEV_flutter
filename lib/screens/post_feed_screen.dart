@@ -14,19 +14,17 @@ class PostFeedScreen extends StatelessWidget {
     final pageTitle = ModalRoute.of(context)!.settings.arguments as String?;
 
     return AppSkeleton(
-      title: pageTitle ?? 'Feed',
-      child: ListView(
-          children: postFeedData
-              .map((post) => PostPreview(
+        title: pageTitle ?? 'Feed',
+        child: ListView(
+            children: postFeedData
+                .map((post) => PostPreview(
                     username: post.username,
                     avatarUrl: post.profileImage,
                     comments: post.commentsCount as int,
                     likes: post.likesCount as int,
                     postDate: post.publishDate,
                     tags: post.tags,
-                    title: post.title,
-                  ))
-              .toList()),
-    );
+                    title: post.title))
+                .toList()));
   }
 }
