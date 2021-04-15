@@ -29,24 +29,22 @@ class PostPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 8),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-          color: Colors.white, border: CustomBorder.horizontalBorder),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          PostPreviewHeader(
-              avatarUrl: avatarUrl, username: username, postDate: postDate),
-          const SizedBox(height: 12),
-          PostTitle(title: title),
-          const SizedBox(height: 4),
-          Row(children: tags!.map((tag) => Tag(tag: tag)).toList()),
-          const SizedBox(height: 8),
-          PostFooter(likes: likes!, comments: comments!),
-        ],
-      ),
-    );
+        margin: const EdgeInsets.only(top: 8),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+            color: Colors.white, border: CustomBorder.horizontalBorder),
+        child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              PostPreviewHeader(
+                  avatarUrl: avatarUrl, username: username, postDate: postDate),
+              const SizedBox(height: 12),
+              PostTitle(title: title),
+              const SizedBox(height: 4),
+              Row(children: tags!.map((tag) => Tag(tag: tag)).toList()),
+              const SizedBox(height: 8),
+              PostFooter(likes: likes!, comments: comments!)
+            ]));
   }
 }

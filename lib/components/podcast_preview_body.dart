@@ -14,13 +14,10 @@ class PodcastPreviewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        PodcastTitle(episodeTitle: episodeTitle),
-        const SizedBox(height: 16),
-        Text(podcastName!, style: Theme.of(context).textTheme.bodyText2)
-      ],
-    );
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      PodcastTitle(episodeTitle: episodeTitle),
+      const SizedBox(height: 16),
+      Text(podcastName!, style: Theme.of(context).textTheme.bodyText2)
+    ]);
   }
 }

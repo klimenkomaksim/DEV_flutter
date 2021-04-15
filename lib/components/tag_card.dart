@@ -19,34 +19,43 @@ class TagCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: CustomBorderRadius.radius,
-          border: CustomBorder.allBorder),
-      child: ClipRRect(
-        borderRadius: CustomBorderRadius.radius,
-        child: Column(
-          children: [
-            Container(height: 16, color: tagColor),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TagTitle(tagName: tagName),
-                    Button(
-                        title: 'Open',
-                        onPress: () {
-                          Navigator.pushNamed(context, AppRoutes.postFeedPage,
-                              arguments: tagName);
-                        }),
-                  ]),
-            )
-          ],
-        ),
-      ),
-    );
+        margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: CustomBorderRadius.radius,
+            border: CustomBorder.allBorder),
+        child: ClipRRect(
+            borderRadius: CustomBorderRadius.radius,
+            child: Column(children: [
+              Container(height: 16, color: tagColor),
+              _TagCardBody(tagName: tagName)
+            ])));
+  }
+}
+
+class _TagCardBody extends StatelessWidget {
+  const _TagCardBody({
+    required this.tagName,
+    Key? key,
+  }) : super(key: key);
+
+  final String? tagName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TagTitle(tagName: tagName),
+              Button(
+                  title: 'Open',
+                  onPress: () {
+                    Navigator.pushNamed(context, AppRoutes.postFeedPage,
+                        arguments: tagName);
+                  })
+            ]));
   }
 }

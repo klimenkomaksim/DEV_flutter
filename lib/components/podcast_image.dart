@@ -11,8 +11,7 @@ class PodcastImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 16, top: 16),
-      child: CircleAvatar(radius: 22, backgroundImage: NetworkImage(url!)),
-    );
+        margin: const EdgeInsets.only(left: 16, top: 16),
+        child: CircleAvatar(radius: 22, backgroundImage: NetworkImage(url!)));
   }
 }

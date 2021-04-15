@@ -59,12 +59,10 @@ class _ListingBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HtmlWidget(
-      data!,
-      textStyle: Theme.of(context)
-          .textTheme
-          .bodyText1!
-          .copyWith(color: CustomColors.primaryText),
-    );
+    return HtmlWidget(data!,
+        textStyle: Theme.of(context)
+            .textTheme
+            .bodyText1!
+            .copyWith(color: CustomColors.primaryText));
   }
 }

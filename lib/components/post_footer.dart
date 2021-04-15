@@ -16,17 +16,15 @@ class PostFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Reaction(reactionCount: likes, svgPath: 'images/heart.svg'),
-        Reaction(reactionCount: comments, svgPath: 'images/comment.svg'),
-        const Spacer(),
-        Button(
-            title: 'Open',
-            onPress: () {
-              Navigator.pushNamed(context, AppRoutes.postPage);
-            }),
-      ],
-    );
+    return Row(children: [
+      Reaction(reactionCount: likes, svgPath: 'images/heart.svg'),
+      Reaction(reactionCount: comments, svgPath: 'images/comment.svg'),
+      const Spacer(),
+      Button(
+          title: 'Open',
+          onPress: () {
+            Navigator.pushNamed(context, AppRoutes.postPage);
+          })
+    ]);
   }
 }

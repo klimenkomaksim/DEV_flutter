@@ -15,11 +15,10 @@ class PostPreviewHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CircleAvatar(backgroundImage: NetworkImage(avatarUrl!), radius: 16),
-        const SizedBox(width: 8),
-        Column(
+    return Row(children: [
+      CircleAvatar(backgroundImage: NetworkImage(avatarUrl!), radius: 16),
+      const SizedBox(width: 8),
+      Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -28,10 +27,8 @@ class PostPreviewHeader extends StatelessWidget {
                     .textTheme
                     .bodyText2!
                     .copyWith(color: CustomColors.tertiaryText)),
-            Text(postDate!, style: Theme.of(context).textTheme.overline),
-          ],
-        )
-      ],
-    );
+            Text(postDate!, style: Theme.of(context).textTheme.overline)
+          ])
+    ]);
   }
 }

@@ -13,8 +13,6 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPress as void Function()?,
-      child: Text(title),
-    );
+        onPressed: onPress as void Function()?, child: Text(title));
   }
 }

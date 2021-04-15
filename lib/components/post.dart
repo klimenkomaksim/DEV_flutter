@@ -28,21 +28,20 @@ class Post extends StatelessWidget {
     return ListView(children: [
       Image(image: NetworkImage(coverImageUrl!)),
       Padding(
-        padding: const EdgeInsets.only(left: 12, top: 12, right: 12),
-        child: PostHeader(
-            title: title!,
-            profileImageUrl: profileImageUrl!,
-            username: username!,
-            publishDate: publishDate!,
-            tags: tags!),
-      ),
+          padding: const EdgeInsets.only(left: 12, top: 12, right: 12),
+          child: PostHeader(
+              title: title!,
+              profileImageUrl: profileImageUrl!,
+              username: username!,
+              publishDate: publishDate!,
+              tags: tags!)),
       Padding(
           padding: const EdgeInsets.only(left: 12, top: 28, right: 12),
           child: HtmlWidget(data!,
               textStyle: Theme.of(context)
                   .textTheme
                   .headline5!
-                  .copyWith(fontWeight: FontWeight.normal))),
+                  .copyWith(fontWeight: FontWeight.normal)))
     ]);
   }
 }
