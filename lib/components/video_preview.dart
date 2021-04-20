@@ -8,20 +8,20 @@ class VideoPreview extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? imageUrl;
-  final String? duration;
+  final String imageUrl;
+  final String duration;
 
   @override
   Widget build(BuildContext context) {
     return Stack(alignment: AlignmentDirectional.bottomEnd, children: [
-      Image(image: NetworkImage(imageUrl!)),
+      Image(image: NetworkImage(imageUrl)),
       Container(
           padding: const EdgeInsets.fromLTRB(5, 2, 5, 3),
           margin: const EdgeInsets.only(bottom: 10, right: 6),
           decoration: BoxDecoration(
               borderRadius: CustomBorderRadius.radius,
               color: Colors.black.withOpacity(0.8)),
-          child: Text(duration!,
+          child: Text(duration,
               style: Theme.of(context)
                   .textTheme
                   .bodyText1!

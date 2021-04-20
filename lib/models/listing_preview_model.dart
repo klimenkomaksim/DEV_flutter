@@ -13,17 +13,18 @@ class ListingPreviewModel {
   final String processedHtml;
   @JsonKey(name: 'listing_category_id')
   final int? listingCategoryId;
-  final List<String>? tags;
+  final List<String> tags;
   final User? user;
 
-  ListingPreviewModel(
-      {required this.id,
-      required this.title,
-      required this.category,
-      required this.processedHtml,
-      this.listingCategoryId,
-      this.tags,
-      this.user});
+  ListingPreviewModel({
+    required this.id,
+    required this.title,
+    required this.category,
+    required this.processedHtml,
+    this.listingCategoryId,
+    this.user,
+    List<String>? tags,
+  }) : tags = tags ?? [];
 
   factory ListingPreviewModel.fromJson(Map<String, dynamic> json) =>
       _$ListingPreviewModelFromJson(json);

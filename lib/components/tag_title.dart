@@ -7,7 +7,7 @@ class TagTitle extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? tagName;
+  final String tagName;
 
   @override
   Widget build(BuildContext context) {

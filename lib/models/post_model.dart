@@ -8,16 +8,16 @@ part 'post_model.g.dart';
 @JsonSerializable()
 class PostModel extends PostPreviewModel {
   @JsonKey(name: 'cover_image')
-  final String coverImage;
+  final String? coverImage;
   @JsonKey(name: 'body_html')
   final String bodyHtml;
 
   PostModel(
-      {required this.coverImage,
-      required this.bodyHtml,
+      {required this.bodyHtml,
       required int id,
       required String title,
       required String publishDate,
+      this.coverImage,
       int? comments,
       int? publicReactionCount,
       List<String>? tags,
@@ -38,4 +38,5 @@ class PostModel extends PostPreviewModel {
   Map<String, dynamic> toJson() => _$PostModelToJson(this);
 
   String get data => bodyHtml;
+  String get coverImageUrl => coverImage ?? '';
 }

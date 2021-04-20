@@ -8,7 +8,7 @@ class PodcastTitle extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? episodeTitle;
+  final String episodeTitle;
 
   @override
   Widget build(BuildContext context) {

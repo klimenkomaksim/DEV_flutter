@@ -17,12 +17,12 @@ class ListingPreview extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? title;
-  final String? data;
-  final String? category;
-  final List<String>? tags;
-  final String? username;
-  final String? profileImage;
+  final String title;
+  final String data;
+  final String category;
+  final List<String> tags;
+  final String username;
+  final String profileImage;
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +31,22 @@ class ListingPreview extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white, border: CustomBorder.horizontalBorder),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(title!,
+          Text(title,
               style: Theme.of(context)
                   .textTheme
                   .headline2!
                   .copyWith(fontWeight: FontWeight.w700, height: 1.25)),
           const SizedBox(height: 4),
-          Wrap(children: tags!.map((tag) => Tag(tag: tag)).toList()),
+          if (tags.isNotEmpty)
+            Wrap(children: tags.map((tag) => Tag(tag: tag)).toList()),
           const SizedBox(height: 12),
-          _ListingBody(data: data!),
+          _ListingBody(data: data),
           const SizedBox(height: 16),
-          ListingFooter(
-              profileImage: profileImage!,
-              username: username!,
-              category: category!)
+          if (username.isNotEmpty && profileImage.isNotEmpty)
+            ListingFooter(
+                profileImage: profileImage,
+                username: username,
+                category: category)
         ]));
   }
 }

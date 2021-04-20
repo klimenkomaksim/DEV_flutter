@@ -9,7 +9,7 @@ class Reaction extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final int? reactionCount;
+  final int reactionCount;
   final String svgPath;
 
   @override

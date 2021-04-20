@@ -20,8 +20,8 @@ class PostFeedScreen extends StatelessWidget {
                 .map((post) => PostPreview(
                     username: post.username,
                     avatarUrl: post.profileImage,
-                    comments: post.commentsCount as int,
-                    likes: post.likesCount as int,
+                    comments: post.commentsCount,
+                    likes: post.likesCount,
                     postDate: post.publishDate,
                     tags: post.tags,
                     title: post.title))

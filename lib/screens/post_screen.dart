@@ -12,7 +12,7 @@ class PostScreen extends StatelessWidget {
         appBar: AppBar(),
         body: Post(
             title: postData.title,
-            coverImageUrl: postData.coverImage,
+            coverImageUrl: postData.coverImageUrl,
             tags: postData.tags,
             username: postData.username,
             data: postData.data,

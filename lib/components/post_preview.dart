@@ -7,13 +7,13 @@ import 'post_title.dart';
 import 'tag.dart';
 
 class PostPreview extends StatelessWidget {
-  final String? username;
-  final String? avatarUrl;
-  final String? postDate;
-  final String? title;
-  final List<String>? tags;
-  final int? likes;
-  final int? comments;
+  final String username;
+  final String avatarUrl;
+  final String postDate;
+  final String title;
+  final List<String> tags;
+  final int likes;
+  final int comments;
 
   const PostPreview({
     required this.username,
@@ -37,14 +37,17 @@ class PostPreview extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              PostPreviewHeader(
-                  avatarUrl: avatarUrl, username: username, postDate: postDate),
+              if (avatarUrl.isNotEmpty && username.isNotEmpty)
+                PostPreviewHeader(
+                    avatarUrl: avatarUrl,
+                    username: username,
+                    postDate: postDate),
               const SizedBox(height: 12),
               PostTitle(title: title),
               const SizedBox(height: 4),
-              Row(children: tags!.map((tag) => Tag(tag: tag)).toList()),
+              Row(children: tags.map((tag) => Tag(tag: tag)).toList()),
               const SizedBox(height: 8),
-              PostFooter(likes: likes!, comments: comments!)
+              PostFooter(likes: likes, comments: comments)
             ]));
   }
 }

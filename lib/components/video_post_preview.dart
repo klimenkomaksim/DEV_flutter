@@ -12,10 +12,10 @@ class VideoPostPreview extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? title;
-  final String? duration;
-  final String? author;
-  final String? imageUrl;
+  final String title;
+  final String duration;
+  final String author;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +28,13 @@ class VideoPostPreview extends StatelessWidget {
           VideoPreview(imageUrl: imageUrl, duration: duration),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-              child:
-                  Text(title!, style: Theme.of(context).textTheme.headline5)),
-          Padding(
-              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-              child:
-                  Text(author!, style: Theme.of(context).textTheme.bodyText1))
+              child: Text(title, style: Theme.of(context).textTheme.headline5)),
+          if (author.isNotEmpty)
+            Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+                child:
+                    Text(author, style: Theme.of(context).textTheme.bodyText1))
         ]));
   }
 }
