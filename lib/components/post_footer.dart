@@ -22,7 +22,7 @@ class PostFooter extends StatelessWidget {
       const Spacer(),
       Button(
           title: 'Open',
-          onPress: () {
+          onPressed: () {
             Navigator.pushNamed(context, AppRoutes.postPage);
           })
     ]);

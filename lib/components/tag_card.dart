@@ -52,7 +52,7 @@ class _TagCardBody extends StatelessWidget {
               TagTitle(tagName: tagName),
               Button(
                   title: 'Open',
-                  onPress: () {
+                  onPressed: () {
                     Navigator.pushNamed(context, AppRoutes.postFeedPage,
                         arguments: tagName);
                   })

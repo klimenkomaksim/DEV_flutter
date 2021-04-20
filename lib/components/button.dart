@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
   const Button({
-    required this.onPress,
+    required this.onPressed,
     required this.title,
     Key? key,
   }) : super(key: key);
 
-  final Function onPress;
+  final VoidCallback onPressed;
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: onPress as void Function()?, child: Text(title));
+    return ElevatedButton(onPressed: onPressed, child: Text(title));
   }
 }
