@@ -13,8 +13,8 @@ class TagCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? tagName;
-  final Color? tagColor;
+  final String tagName;
+  final Color tagColor;
 
   @override
   Widget build(BuildContext context) {

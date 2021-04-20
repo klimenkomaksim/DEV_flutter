@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'tag_model.g.dart';
+
+@JsonSerializable()
 class TagModel {
-  int? _id;
-  String? _name;
-  String? _bgColorHex;
-  String? _textColorHex;
+  final int id;
+  final String name;
+  @JsonKey(name: 'bg_color_hex', includeIfNull: false)
+  final String? backgroundColorHex;
+  @JsonKey(name: 'text_color_hex', includeIfNull: false)
+  final String? textColorHex;
 
   TagModel(
-      {required int id,
-      required String name,
-      required String bgColorHex,
-      required String textColorHex}) {
-    _id = id;
-    _name = name;
-    _bgColorHex = bgColorHex;
-    _textColorHex = textColorHex;
-  }
+      {required this.id,
+      required this.name,
+      required this.backgroundColorHex,
+      required this.textColorHex});
 
-  int? get id => _id;
-  String? get name => _name;
-  Color get backgroundColor => formatColor(_bgColorHex);
-  Color get textColorHex => formatColor(_textColorHex);
+  factory TagModel.fromJson(Map<String, dynamic> json) =>
+      _$TagModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TagModelToJson(this);
+
+  Color get backgroundColor => formatColor(backgroundColorHex);
+  Color get textColor => formatColor(textColorHex);
 
   Color formatColor(String? hexColor) {
     if (hexColor == null) {
@@ -31,23 +35,5 @@ class TagModel {
     final colorInt = int.parse(colorString, radix: 16);
 
     return Color(colorInt).withOpacity(1);
-  }
-
-  TagModel.fromJson(Map<String, dynamic> json) {
-    _id = json['id'];
-    _name = json['name'];
-    _bgColorHex = json['bg_color_hex'];
-    _textColorHex = json['text_color_hex'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-
-    data['id'] = _id;
-    data['name'] = _name;
-    data['bg_color_hex'] = _bgColorHex;
-    data['text_color_hex'] = _textColorHex;
-
-    return data;
   }
 }
