@@ -1,6 +1,7 @@
 import 'package:dev_flutter/models/post_model.dart';
 
 final postData = PostModel.fromJson({
+  'id': 1,
   'title': 'Singing the praises of gdu',
   'cover_image':
       'https://res.cloudinary.com/practicaldev/image/fetch/s--ux-gx7Pf--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3dxk6d69lzdrfsitp5bw.png',

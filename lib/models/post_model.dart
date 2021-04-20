@@ -1,60 +1,41 @@
-import 'package:dev_flutter/models/post_preview_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+import 'post_preview_model.dart';
 import 'user_model.dart';
 
+part 'post_model.g.dart';
+
+@JsonSerializable()
 class PostModel extends PostPreviewModel {
-  String? _coverImage;
-  String? _bodyHtml;
-  List<String>? _tags;
+  @JsonKey(name: 'cover_image')
+  final String coverImage;
+  @JsonKey(name: 'body_html')
+  final String bodyHtml;
 
   PostModel(
-      {required int id,
+      {required this.coverImage,
+      required this.bodyHtml,
+      required int id,
       required String title,
-      required String description,
-      required String readablePublishDate,
-      required int commentsCount,
-      required int publicReactionsCount,
-      required String coverImage,
-      required List<String> tags,
-      required String bodyHtml,
-      required User user})
+      required String publishDate,
+      int? comments,
+      int? publicReactionCount,
+      List<String>? tags,
+      User? user})
       : super(
             id: id,
             title: title,
-            description: description,
-            readablePublishDate: readablePublishDate,
-            commentsCount: commentsCount,
-            publicReactionsCount: publicReactionsCount,
-            tagList: tags,
-            user: user) {
-    _coverImage = coverImage;
-    _bodyHtml = bodyHtml;
-    _tags = tags;
-  }
+            publishDate: publishDate,
+            comments: comments,
+            publicReactionCount: publicReactionCount,
+            tags: tags,
+            user: user);
 
-  String? get coverImage => _coverImage;
-  String? get data => _bodyHtml;
-  @override
-  List<String>? get tags => _tags;
+  factory PostModel.fromJson(Map<String, dynamic> json) =>
+      _$PostModelFromJson(json);
 
   @override
-  PostModel.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
-    _coverImage = json['cover_image'];
-    _bodyHtml = json['body_html'];
-    _tags = json['tags'];
-  }
+  Map<String, dynamic> toJson() => _$PostModelToJson(this);
 
-  @override
-  Map<String, dynamic> toJson() {
-    final postPreviewMap = super.toJson();
-    final data = <String, dynamic>{};
-
-    data['cover_image'] = _coverImage;
-    data['body_html'] = _bodyHtml;
-
-    return {
-      ...postPreviewMap,
-      ...data,
-    };
-  }
+  String get data => bodyHtml;
 }

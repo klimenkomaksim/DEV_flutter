@@ -1,61 +1,24 @@
+import 'package:json_annotation/json_annotation.dart';
+
+import 'podcast_model.dart';
+
+part 'podcast_preview_model.g.dart';
+
+@JsonSerializable()
 class PodcastPreviewModel {
-  int? _id;
-  String? _title;
-  Podcast? _podcast;
+  final int id;
+  @JsonKey(name: 'title')
+  final String episodeTitle;
+  final Podcast? podcast;
 
   PodcastPreviewModel(
-      {required int id, required String title, required Podcast podcast}) {
-    _id = id;
-    _title = title;
-    _podcast = podcast;
-  }
+      {required this.id, required this.episodeTitle, this.podcast});
 
-  int? get id => _id;
-  String? get episodeTitle => _title;
-  String? get podcastTitle => _podcast?.title;
-  String? get podcastImageUrl => _podcast?.imageUrl;
+  factory PodcastPreviewModel.fromJson(Map<String, dynamic> json) =>
+      _$PodcastPreviewModelFromJson(json);
 
-  PodcastPreviewModel.fromJson(Map<String, dynamic> json) {
-    _id = json['id'];
-    _title = json['title'];
-    _podcast =
-        json['podcast'] != null ? Podcast.fromJson(json['podcast']) : null;
-  }
+  Map<String, dynamic> toJson() => _$PodcastPreviewModelToJson(this);
 
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-
-    data['id'] = _id;
-    data['title'] = _title;
-    data['podcast'] = _podcast?.toJson();
-
-    return data;
-  }
-}
-
-class Podcast {
-  String? _title;
-  String? _imageUrl;
-
-  Podcast({required String title, required String imageUrl}) {
-    _title = title;
-    _imageUrl = imageUrl;
-  }
-
-  String? get title => _title;
-  String? get imageUrl => _imageUrl;
-
-  Podcast.fromJson(Map<String, dynamic> json) {
-    _title = json['title'];
-    _imageUrl = json['image_url'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-
-    data['title'] = _title;
-    data['image_url'] = _imageUrl;
-
-    return data;
-  }
+  String get podcastTitle => podcast?.title ?? '';
+  String get podcastImageUrl => podcast?.imageUrl ?? '';
 }
