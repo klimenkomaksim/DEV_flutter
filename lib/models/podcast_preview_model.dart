@@ -11,8 +11,11 @@ class PodcastPreviewModel {
   final String episodeTitle;
   final Podcast? podcast;
 
-  PodcastPreviewModel(
-      {required this.id, required this.episodeTitle, this.podcast});
+  PodcastPreviewModel({
+    required this.id,
+    required this.episodeTitle,
+    this.podcast,
+  });
 
   factory PodcastPreviewModel.fromJson(Map<String, dynamic> json) =>
       _$PodcastPreviewModelFromJson(json);
