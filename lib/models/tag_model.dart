@@ -7,10 +7,10 @@ part 'tag_model.g.dart';
 class TagModel {
   final int id;
   final String name;
-  @JsonKey(name: 'bg_color_hex', includeIfNull: false)
-  final String? backgroundColorHex;
-  @JsonKey(name: 'text_color_hex', includeIfNull: false)
-  final String? textColorHex;
+  @JsonKey(name: 'bg_color_hex', defaultValue: '')
+  final String backgroundColorHex;
+  @JsonKey(name: 'text_color_hex', defaultValue: '')
+  final String textColorHex;
 
   TagModel(
       {required this.id,
@@ -26,8 +26,8 @@ class TagModel {
   Color get backgroundColor => formatColor(backgroundColorHex);
   Color get textColor => formatColor(textColorHex);
 
-  Color formatColor(String? hexColor) {
-    if (hexColor == null) {
+  Color formatColor(String hexColor) {
+    if (hexColor.isEmpty) {
       return Colors.black;
     }
 

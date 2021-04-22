@@ -12,8 +12,8 @@ class VideoPreviewModel {
   final String title;
   @JsonKey(name: 'video_duration_in_minutes')
   final String duration;
-  @JsonKey(name: 'video_source_url', includeIfNull: false)
-  final String? videoSourceUrl;
+  @JsonKey(name: 'video_source_url', defaultValue: '')
+  final String videoSourceUrl;
   final User? user;
 
   VideoPreviewModel(

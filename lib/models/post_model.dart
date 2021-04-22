@@ -11,23 +11,26 @@ class PostModel extends PostPreviewModel {
   final String? coverImage;
   @JsonKey(name: 'body_html')
   final String bodyHtml;
+  @override
+  @JsonKey(defaultValue: [])
+  final List<String> tags;
 
   PostModel(
       {required this.bodyHtml,
       required int id,
       required String title,
       required String publishDate,
+      required this.tags,
       this.coverImage,
-      int? comments,
-      int? publicReactionCount,
-      List<String>? tags,
+      int comments = 0,
+      int publicReactionCount = 0,
       User? user})
       : super(
             id: id,
             title: title,
             publishDate: publishDate,
-            comments: comments,
-            publicReactionCount: publicReactionCount,
+            commentsCount: comments,
+            likesCount: publicReactionCount,
             tags: tags,
             user: user);
 
