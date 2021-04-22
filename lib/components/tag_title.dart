@@ -7,7 +7,7 @@ class TagTitle extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? tagName;
+  final String tagName;
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +16,14 @@ class TagTitle extends StatelessWidget {
             text: '#',
             style: Theme.of(context)
                 .textTheme
-                .headline2!
+                .headline3!
                 .copyWith(color: CustomColors.tagLabel),
             children: [
           TextSpan(
               text: tagName,
               style: Theme.of(context)
                   .textTheme
-                  .headline2!
+                  .headline3!
                   .copyWith(color: CustomColors.primaryText))
         ]));
   }

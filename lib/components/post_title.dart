@@ -6,10 +6,10 @@ class PostTitle extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? title;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Text(title!, style: Theme.of(context).textTheme.headline3);
+    return Text(title, style: Theme.of(context).textTheme.headline4);
   }
 }

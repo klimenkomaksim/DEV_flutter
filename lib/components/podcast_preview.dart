@@ -12,28 +12,22 @@ class PodcastPreview extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? episodeTitle;
-  final String? podcastName;
-  final String? imageUrl;
+  final String episodeTitle;
+  final String podcastName;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          color: Colors.white, border: CustomBorder.horizontalBorder),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          PodcastImage(url: imageUrl),
+        decoration: BoxDecoration(
+            color: Colors.white, border: CustomBorder.horizontalBorder),
+        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          if (imageUrl.isNotEmpty) PodcastImage(url: imageUrl),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
-              child: PodcastPreviewBody(
-                  episodeTitle: episodeTitle, podcastName: podcastName),
-            ),
-          ),
-        ],
-      ),
-    );
+              child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+                  child: PodcastPreviewBody(
+                      episodeTitle: episodeTitle, podcastName: podcastName)))
+        ]));
   }
 }

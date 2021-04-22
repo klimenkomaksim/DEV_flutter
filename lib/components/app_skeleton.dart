@@ -16,12 +16,10 @@ class AppSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title, style: Theme.of(context).textTheme.headline1),
-        leading: const MenuButton(),
-      ),
-      drawer: const Menu(),
-      body: child,
-    );
+        appBar: AppBar(
+            title: Text(title, style: Theme.of(context).textTheme.headline2),
+            leading: const MenuButton()),
+        drawer: const Menu(),
+        body: child);
   }
 }

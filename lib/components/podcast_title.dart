@@ -8,19 +8,17 @@ class PodcastTitle extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final String? episodeTitle;
+  final String episodeTitle;
 
   @override
   Widget build(BuildContext context) {
     return RichText(
-      text: TextSpan(children: [
-        const WidgetSpan(
-            baseline: TextBaseline.alphabetic,
-            alignment: PlaceholderAlignment.baseline,
-            child: PodcastLabel()),
-        TextSpan(
-            text: episodeTitle, style: Theme.of(context).textTheme.headline3)
-      ]),
-    );
+        text: TextSpan(children: [
+      const WidgetSpan(
+          baseline: TextBaseline.alphabetic,
+          alignment: PlaceholderAlignment.baseline,
+          child: PodcastLabel()),
+      TextSpan(text: episodeTitle, style: Theme.of(context).textTheme.headline4)
+    ]));
   }
 }
