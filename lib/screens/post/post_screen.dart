@@ -1,6 +1,7 @@
-import 'package:dev_flutter/components/post.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_flutter/temporary/post_data.dart';
+
+import 'components/post.dart';
 
 class PostScreen extends StatelessWidget {
   const PostScreen({Key? key}) : super(key: key);

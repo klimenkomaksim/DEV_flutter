@@ -1,7 +1,6 @@
-import 'package:dev_flutter/theme/colors.dart';
+import 'package:dev_flutter/consts/colors.dart';
+import 'package:dev_flutter/shared_components/tag.dart';
 import 'package:flutter/material.dart';
-
-import 'tag.dart';
 
 class PostHeader extends StatelessWidget {
   const PostHeader(

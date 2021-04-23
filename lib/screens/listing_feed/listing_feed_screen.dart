@@ -1,8 +1,9 @@
-import 'package:dev_flutter/components/app_skeleton.dart';
-import 'package:dev_flutter/components/listing_preview.dart';
+import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/temporary/listings_data.dart';
 
 import 'package:flutter/material.dart';
+
+import 'components/listing_preview.dart';
 
 class ListingFeedScreen extends StatelessWidget {
   const ListingFeedScreen({

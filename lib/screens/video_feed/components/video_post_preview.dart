@@ -1,4 +1,4 @@
-import 'package:dev_flutter/theme/borders.dart';
+import 'package:dev_flutter/consts/borders.dart';
 import 'package:flutter/material.dart';
 
 import 'video_preview.dart';

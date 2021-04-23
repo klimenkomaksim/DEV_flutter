@@ -1,8 +1,7 @@
 import 'package:dev_flutter/consts/app_routes.dart';
+import 'package:dev_flutter/shared_components/button.dart';
+import 'package:dev_flutter/shared_components/reaction.dart';
 import 'package:flutter/material.dart';
-
-import 'button.dart';
-import 'reaction.dart';
 
 class PostFooter extends StatelessWidget {
   const PostFooter({

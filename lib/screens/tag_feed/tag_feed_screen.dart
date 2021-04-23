@@ -1,7 +1,8 @@
-import 'package:dev_flutter/components/app_skeleton.dart';
-import 'package:dev_flutter/components/tag_card.dart';
+import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/temporary/tag_data.dart';
 import 'package:flutter/material.dart';
+
+import 'components/tag_card.dart';
 
 class TagFeedScreen extends StatelessWidget {
   const TagFeedScreen({

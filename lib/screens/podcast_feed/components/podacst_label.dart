@@ -1,5 +1,5 @@
-import 'package:dev_flutter/theme/border_radius.dart';
-import 'package:dev_flutter/theme/colors.dart';
+import 'package:dev_flutter/consts/border_radius.dart';
+import 'package:dev_flutter/consts/colors.dart';
 import 'package:flutter/material.dart';
 
 class PodcastLabel extends StatelessWidget {
