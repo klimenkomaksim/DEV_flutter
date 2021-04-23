@@ -1,10 +1,10 @@
-import 'package:dev_flutter/theme/borders.dart';
-import 'package:dev_flutter/theme/colors.dart';
+import 'package:dev_flutter/consts/borders.dart';
+import 'package:dev_flutter/consts/colors.dart';
+import 'package:dev_flutter/shared_components/tag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import 'listing_footer.dart';
-import 'tag.dart';
 
 class ListingPreview extends StatelessWidget {
   const ListingPreview({

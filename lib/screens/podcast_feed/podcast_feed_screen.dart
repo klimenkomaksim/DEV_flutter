@@ -1,7 +1,8 @@
-import 'package:dev_flutter/components/app_skeleton.dart';
-import 'package:dev_flutter/components/podcast_preview.dart';
+import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/temporary/podcast_data.dart';
 import 'package:flutter/material.dart';
+
+import 'components/podcast_preview.dart';
 
 class PodcastFeedScreen extends StatelessWidget {
   const PodcastFeedScreen({

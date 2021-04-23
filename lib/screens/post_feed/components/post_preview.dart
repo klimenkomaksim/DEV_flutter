@@ -1,10 +1,10 @@
-import 'package:dev_flutter/theme/borders.dart';
+import 'package:dev_flutter/consts/borders.dart';
+import 'package:dev_flutter/shared_components/tag.dart';
 import 'package:flutter/material.dart';
 
 import 'post_footer.dart';
 import 'post_preview_header.dart';
 import 'post_title.dart';
-import 'tag.dart';
 
 class PostPreview extends StatelessWidget {
   final String username;

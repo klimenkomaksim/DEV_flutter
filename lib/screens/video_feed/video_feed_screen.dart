@@ -1,7 +1,8 @@
-import 'package:dev_flutter/components/app_skeleton.dart';
-import 'package:dev_flutter/components/video_post_preview.dart';
+import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/temporary/video_data.dart';
 import 'package:flutter/material.dart';
+
+import 'components/video_post_preview.dart';
 
 class VideoFeedScreen extends StatelessWidget {
   const VideoFeedScreen({

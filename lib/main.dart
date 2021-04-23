@@ -1,14 +1,14 @@
 import 'package:dev_flutter/consts/app_routes.dart';
-import 'package:dev_flutter/screens/post_screen.dart';
-import 'package:dev_flutter/theme/theme.dart';
+import 'package:dev_flutter/screens/podcast_feed/podcast_feed_screen.dart';
+import 'package:dev_flutter/screens/post/post_screen.dart';
+import 'package:dev_flutter/theme.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/listing_feed_screen.dart';
-import 'screens/podcast_feed_screen.dart';
-import 'screens/post_feed_screen.dart';
-import 'screens/tag_feed_screen.dart';
-import 'screens/video_feed_screen.dart';
-import 'theme/theme.dart';
+import 'screens/listing_feed/listing_feed_screen.dart';
+import 'screens/post_feed/post_feed_screen.dart';
+import 'screens/tag_feed/tag_feed_screen.dart';
+import 'screens/video_feed/video_feed_screen.dart';
+import 'theme.dart';
 
 void main() {
   runApp(const MyApp());

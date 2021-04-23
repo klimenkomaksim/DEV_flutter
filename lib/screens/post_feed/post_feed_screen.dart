@@ -1,8 +1,9 @@
-import 'package:dev_flutter/components/app_skeleton.dart';
-import 'package:dev_flutter/components/post_preview.dart';
+import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/temporary/post_feed_data.dart';
 
 import 'package:flutter/material.dart';
+
+import 'components/post_preview.dart';
 
 class PostFeedScreen extends StatelessWidget {
   const PostFeedScreen({

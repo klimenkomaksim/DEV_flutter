@@ -1,9 +1,9 @@
 import 'package:dev_flutter/consts/app_routes.dart';
-import 'package:dev_flutter/theme/border_radius.dart';
-import 'package:dev_flutter/theme/borders.dart';
+import 'package:dev_flutter/consts/border_radius.dart';
+import 'package:dev_flutter/consts/borders.dart';
+import 'package:dev_flutter/shared_components/button.dart';
 import 'package:flutter/material.dart';
 
-import 'button.dart';
 import 'tag_title.dart';
 
 class TagCard extends StatelessWidget {
