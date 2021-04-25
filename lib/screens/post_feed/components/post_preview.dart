@@ -33,21 +33,17 @@ class PostPreview extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
             color: Colors.white, border: CustomBorder.horizontalBorder),
-        child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (avatarUrl.isNotEmpty && username.isNotEmpty)
-                PostPreviewHeader(
-                    avatarUrl: avatarUrl,
-                    username: username,
-                    postDate: postDate),
-              const SizedBox(height: 12),
-              PostTitle(title: title),
-              const SizedBox(height: 4),
-              Row(children: tags.map((tag) => Tag(tag: tag)).toList()),
-              const SizedBox(height: 8),
-              PostFooter(likes: likes, comments: comments)
-            ]));
+        child:
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          if (avatarUrl.isNotEmpty && username.isNotEmpty)
+            PostPreviewHeader(
+                avatarUrl: avatarUrl, username: username, postDate: postDate),
+          const SizedBox(height: 12),
+          PostTitle(title: title),
+          const SizedBox(height: 4),
+          Wrap(children: tags.map((tag) => Tag(tag: tag)).toList()),
+          const SizedBox(height: 8),
+          PostFooter(likes: likes, comments: comments)
+        ]));
   }
 }
