@@ -60,6 +60,14 @@ class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
     }
   }
 
+  Future<void> _refreshData() async {
+    setState(() {
+      isLoading = true;
+      pageNumber = 1;
+    });
+    await _fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     if (hasError && data.isEmpty) {
@@ -74,25 +82,19 @@ class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
           itemCount: widget.fakeItemsCount);
     }
 
-    return ListView.builder(
-        itemBuilder: (context, index) {
-          if (index == data.length - _nextPageThreshold) {
-            _fetchData();
-          }
+    return RefreshIndicator(
+      onRefresh: _refreshData,
+      child: ListView.builder(
+          itemBuilder: (context, index) {
+            if (index == data.length - _nextPageThreshold) {
+              _fetchData();
+            }
 
-          final item = data[index];
+            final item = data[index];
 
-          return widget.element(context, item, null);
-
-          // return PostPreview(
-          //     username: post.username,
-          //     avatarUrl: post.profileImage,
-          //     postDate: post.publishDate,
-          //     title: post.title,
-          //     tags: post.tags,
-          //     likes: post.likesCount,
-          //     comments: post.commentsCount);
-        },
-        itemCount: data.length);
+            return widget.element(context, item, null);
+          },
+          itemCount: data.length),
+    );
   }
 }
