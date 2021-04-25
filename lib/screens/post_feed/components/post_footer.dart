@@ -7,11 +7,13 @@ class PostFooter extends StatelessWidget {
   const PostFooter({
     required this.likes,
     required this.comments,
+    required this.id,
     Key? key,
   }) : super(key: key);
 
   final int likes;
   final int comments;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class PostFooter extends StatelessWidget {
       Button(
           title: 'Open',
           onPressed: () {
-            Navigator.pushNamed(context, AppRoutes.postPage);
+            Navigator.pushNamed(context, AppRoutes.postPage, arguments: id);
           })
     ]);
   }

@@ -49,5 +49,6 @@ class PostFeedScreen extends StatelessWidget {
       title: post.title,
       tags: post.tags,
       likes: post.likesCount,
-      comments: post.commentsCount);
+      comments: post.commentsCount,
+      id: post.id);
 }

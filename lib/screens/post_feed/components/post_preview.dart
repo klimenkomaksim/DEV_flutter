@@ -14,6 +14,7 @@ class PostPreview extends StatelessWidget {
   final List<String> tags;
   final int likes;
   final int comments;
+  final int id;
 
   const PostPreview({
     required this.username,
@@ -23,6 +24,7 @@ class PostPreview extends StatelessWidget {
     required this.tags,
     required this.likes,
     required this.comments,
+    required this.id,
     Key? key,
   }) : super(key: key);
 
@@ -43,7 +45,7 @@ class PostPreview extends StatelessWidget {
           const SizedBox(height: 4),
           Wrap(children: tags.map((tag) => Tag(tag: tag)).toList()),
           const SizedBox(height: 8),
-          PostFooter(likes: likes, comments: comments)
+          PostFooter(likes: likes, comments: comments, id: id)
         ]));
   }
 }

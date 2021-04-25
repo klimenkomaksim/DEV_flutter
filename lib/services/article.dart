@@ -34,8 +34,8 @@ class Article extends BaseRequest {
     return getAll(params: params);
   }
 
-  Future<PostModel> getById(String id) async {
-    final Map<String, dynamic> json = await get(basePath + id);
+  Future<PostModel> getById(int id) async {
+    final Map<String, dynamic> json = await get(basePath + id.toString());
 
     return PostModel.fromJson(json);
   }
