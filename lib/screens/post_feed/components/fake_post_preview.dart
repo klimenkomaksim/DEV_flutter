@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:dev_flutter/consts/border_radius.dart';
 import 'package:dev_flutter/consts/borders.dart';
+import 'package:dev_flutter/shared_components/fake_element.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class FakePostPreview extends StatelessWidget {
   const FakePostPreview({
@@ -56,7 +56,7 @@ class _FakeCircleAvatar extends StatelessWidget {
     final decoration =
         BoxDecoration(color: Colors.grey[300], shape: BoxShape.circle);
 
-    return _getFakeElement(32, 32, decoration: decoration);
+    return FakeElement(height: 32, width: 32, decoration: decoration);
   }
 }
 
@@ -71,9 +71,9 @@ class _FakePostAuthor extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _getFakeElement(16, 180),
+          const FakeElement(height: 16, width: 180),
           const SizedBox(height: 2),
-          _getFakeElement(14, 40),
+          const FakeElement(height: 14, width: 40)
         ]);
   }
 }
@@ -85,7 +85,7 @@ class _FakePostTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _getFakeElement(25, 360);
+    return const FakeElement(height: 25, width: 360);
   }
 }
 
@@ -108,8 +108,10 @@ class _FakeTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _getFakeElement(15, 80,
-        margin: const EdgeInsets.only(top: 4, right: 8, bottom: 4));
+    return const FakeElement(
+        height: 15,
+        width: 80,
+        margin: EdgeInsets.only(top: 4, right: 8, bottom: 4));
   }
 }
 
@@ -136,8 +138,8 @@ class _FakeReaction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _getFakeElement(24, 52,
-        margin: const EdgeInsets.fromLTRB(8, 4, 12, 4));
+    return const FakeElement(
+        height: 24, width: 52, margin: EdgeInsets.fromLTRB(8, 4, 12, 4));
   }
 }
 
@@ -153,27 +155,6 @@ class _FakeButton extends StatelessWidget {
       borderRadius: CustomBorderRadius.radius,
     );
 
-    return _getFakeElement(40, 64, decoration: decoration);
+    return FakeElement(height: 40, width: 64, decoration: decoration);
   }
-}
-
-Shimmer _getFakeElement(
-  double height,
-  double width, {
-  BoxDecoration? decoration,
-  EdgeInsets? margin,
-}) {
-  final color = decoration == null ? Colors.grey[300] : null;
-
-  return Shimmer.fromColors(
-    baseColor: Colors.grey[300]!,
-    highlightColor: Colors.grey[100]!,
-    child: Container(
-      height: height,
-      width: width,
-      decoration: decoration,
-      color: color,
-      margin: margin,
-    ),
-  );
 }
