@@ -7,11 +7,13 @@ class ErrorMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+        padding: const EdgeInsets.only(left: 30, right: 30, top: 140),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-      Image.asset('images/oops.png'),
-      Text('Something went wrong...',
-          style: Theme.of(context).textTheme.headline2)
-    ]));
+          Image.asset('images/oops.png'),
+          const SizedBox(height: 20),
+          Text('Something went wrong...',
+              style: Theme.of(context).textTheme.headline1)
+        ]));
   }
 }
