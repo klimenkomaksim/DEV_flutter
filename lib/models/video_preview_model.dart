@@ -27,6 +27,9 @@ class VideoPreviewModel {
   factory VideoPreviewModel.fromJson(Map<String, dynamic> json) =>
       _$VideoPreviewModelFromJson(json);
 
+  static VideoPreviewModel Function(Map<String, dynamic>) fromJsonFactory =
+      _$VideoPreviewModelFromJson;
+
   Map<String, dynamic> toJson() => _$VideoPreviewModelToJson(this);
 
   String get author => user?.username ?? '';

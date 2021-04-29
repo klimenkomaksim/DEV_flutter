@@ -22,6 +22,9 @@ class PodcastPreviewModel {
 
   Map<String, dynamic> toJson() => _$PodcastPreviewModelToJson(this);
 
+  static PodcastPreviewModel Function(Map<String, dynamic>) fromJsonFactory =
+      _$PodcastPreviewModelFromJson;
+
   String get podcastTitle => podcast?.title ?? '';
   String get podcastImageUrl => podcast?.imageUrl ?? '';
 }
