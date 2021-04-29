@@ -1,7 +1,6 @@
 import 'package:dev_flutter/services/api.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
-import 'package:dev_flutter/temporary/listings_data.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -18,10 +17,9 @@ class ListingFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppSkeleton(
-      title: 'Listings',
-      child: InfiniteScrollFeed(
-          request: _fetchListings, elementBuilder: _listingPreviewBuilder),
-    );
+        title: 'Listings',
+        child: InfiniteScrollFeed(
+            request: _fetchListings, elementBuilder: _listingPreviewBuilder));
   }
 
   Future<dynamic> _fetchListings(int pageNumber) =>

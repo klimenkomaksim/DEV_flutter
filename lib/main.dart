@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.podcastFeedPage: (context) => PodcastFeedScreen(),
         AppRoutes.videoFeedPage: (context) => VideoFeedScreen(),
         AppRoutes.tagFeedPage: (context) => TagFeedScreen(),
-        AppRoutes.postPage: (context) => const PostScreen()
+        AppRoutes.postPage: (context) => PostScreen()
       },
     );
   }
