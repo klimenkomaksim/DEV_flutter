@@ -24,7 +24,8 @@ class VideoPostPreview extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 8),
         decoration:
             BoxDecoration(color: Colors.white, border: CustomBorder.allBorder),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child:
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           VideoPreview(imageUrl: imageUrl, duration: duration),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
