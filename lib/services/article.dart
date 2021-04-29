@@ -2,17 +2,10 @@ import 'package:dev_flutter/services/base.dart';
 import 'package:dev_flutter/models/post_model.dart';
 import 'package:dev_flutter/models/post_preview_model.dart';
 
-class Article extends BaseRequest {
-  static String basePath = 'articles/';
+class Article extends BaseRequestService {
+  static const _endpointPath = 'articles/';
 
-  Article(String url) : super(baseUrl: url);
-
-  Future<List<PostPreviewModel>> getAll(
-      {Map<String, dynamic> params = const {}}) async {
-    final List<dynamic> json = await get(basePath, params: params);
-
-    return json.map((post) => PostPreviewModel.fromJson(post)).toList();
-  }
+  Article(String url) : super(baseUrl: url, endpointPath: _endpointPath);
 
   @override
   Future<List<PostPreviewModel>> getByPage(int pageNumber) {
@@ -35,8 +28,6 @@ class Article extends BaseRequest {
   }
 
   Future<PostModel> getById(int id) async {
-    final Map<String, dynamic> json = await get(basePath + id.toString());
-
-    return PostModel.fromJson(json);
+    return get(endpointPath + id.toString());
   }
 }
