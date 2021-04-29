@@ -19,7 +19,7 @@ class TagFeedScreen extends StatelessWidget {
     return AppSkeleton(
       title: 'Tags',
       child: InfiniteScrollFeed(
-        element: _tagCardBuilder,
+        elementBuilder: _tagCardBuilder,
         request: _fetchTags,
         fakeElement: const FakeTagCard(),
         fakeItemsCount: 8,

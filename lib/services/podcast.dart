@@ -2,7 +2,7 @@ import 'package:dev_flutter/models/podcast_preview_model.dart';
 import 'package:dev_flutter/services/base.dart';
 
 class Podcast extends BaseRequestService {
-  static const _endpointPath = 'ßpodcast_episodes/';
+  static const _endpointPath = 'podcast_episodes/';
 
   Podcast(String url) : super(baseUrl: url, endpointPath: _endpointPath);
 

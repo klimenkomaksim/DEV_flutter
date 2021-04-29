@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/posts',
       routes: {
         AppRoutes.postFeedPage: (context) => PostFeedScreen(),
-        AppRoutes.listingFeedPage: (context) => const ListingFeedScreen(),
-        AppRoutes.podcastFeedPage: (context) => const PodcastFeedScreen(),
+        AppRoutes.listingFeedPage: (context) => ListingFeedScreen(),
+        AppRoutes.podcastFeedPage: (context) => PodcastFeedScreen(),
         AppRoutes.videoFeedPage: (context) => VideoFeedScreen(),
         AppRoutes.tagFeedPage: (context) => TagFeedScreen(),
         AppRoutes.postPage: (context) => const PostScreen()

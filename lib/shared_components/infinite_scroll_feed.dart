@@ -1,19 +1,20 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'centered_spinner.dart';
 import 'error_message.dart';
 
 class InfiniteScrollFeed extends StatefulWidget {
   final Future<dynamic> Function(int) request;
-  final Widget fakeElement;
-  final ValueWidgetBuilder<dynamic> element;
+  final Widget? fakeElement;
+  final ValueWidgetBuilder<dynamic> elementBuilder;
   final int fakeItemsCount;
 
   const InfiniteScrollFeed({
     required this.request,
-    required this.fakeElement,
-    required this.element,
-    required this.fakeItemsCount,
+    required this.elementBuilder,
+    this.fakeElement,
+    this.fakeItemsCount = 0,
     Key? key,
   }) : super(key: key);
 
@@ -75,11 +76,7 @@ class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
     }
 
     if (isLoading) {
-      return ListView.builder(
-          itemBuilder: (context, index) {
-            return widget.fakeElement;
-          },
-          itemCount: widget.fakeItemsCount);
+      return _getLoadinWidget();
     }
 
     return RefreshIndicator(
@@ -92,9 +89,21 @@ class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
 
             final item = data[index];
 
-            return widget.element(context, item, null);
+            return widget.elementBuilder(context, item, null);
           },
           itemCount: data.length),
     );
+  }
+
+  Widget _getLoadinWidget() {
+    if (widget.fakeElement != null) {
+      return ListView.builder(
+          itemBuilder: (context, index) {
+            return widget.fakeElement!;
+          },
+          itemCount: widget.fakeItemsCount);
+    }
+
+    return const CenteredSpinner();
   }
 }

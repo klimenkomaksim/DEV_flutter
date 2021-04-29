@@ -19,7 +19,7 @@ class VideoFeedScreen extends StatelessWidget {
     return AppSkeleton(
       title: 'Video',
       child: InfiniteScrollFeed(
-        element: _videoPostPreviewBuilder,
+        elementBuilder: _videoPostPreviewBuilder,
         fakeElement: const FakeVideoPostPreview(),
         fakeItemsCount: 3,
         request: _fetchVideos,

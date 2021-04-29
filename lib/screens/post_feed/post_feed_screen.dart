@@ -23,7 +23,7 @@ class PostFeedScreen extends StatelessWidget {
     return AppSkeleton(
       title: tagName ?? 'Feed',
       child: InfiniteScrollFeed(
-        element: _postPreviewBuilder,
+        elementBuilder: _postPreviewBuilder,
         fakeElement: const FakePostPreview(),
         fakeItemsCount: 6,
         request: requestCallback,
