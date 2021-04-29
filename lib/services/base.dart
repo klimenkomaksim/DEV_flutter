@@ -57,7 +57,7 @@ abstract class BaseRequestService {
   Future<List<T>> getAll<T>({
     Map<String, dynamic> params = const {},
   }) async {
-    final json = await _get('articles/', params: params);
+    final json = await _get(endpointPath, params: params);
 
     return _jsonDecoder.decode<T>(json);
   }
