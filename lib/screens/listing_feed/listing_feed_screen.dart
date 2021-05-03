@@ -1,3 +1,4 @@
+import 'package:dev_flutter/models/listing_preview_model.dart';
 import 'package:dev_flutter/services/api.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
@@ -22,7 +23,7 @@ class ListingFeedScreen extends StatelessWidget {
             request: _fetchListings, elementBuilder: _listingPreviewBuilder));
   }
 
-  Future<dynamic> _fetchListings(int pageNumber) =>
+  Future<List<ListingPreviewModel>> _fetchListings(int pageNumber) =>
       api.listing.getByPage(pageNumber);
 
   Widget _listingPreviewBuilder(context, dynamic listing, _) => ListingPreview(

@@ -1,3 +1,4 @@
+import 'package:dev_flutter/models/tag_model.dart';
 import 'package:dev_flutter/screens/tag_feed/components/fake_tag_card.dart';
 import 'package:dev_flutter/services/api.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
@@ -30,6 +31,6 @@ class TagFeedScreen extends StatelessWidget {
   Widget _tagCardBuilder(context, dynamic tag, _) =>
       TagCard(tagColor: tag.backgroundColor, tagName: tag.name);
 
-  Future<dynamic> _fetchTags(int pageNumber) async =>
+  Future<List<TagModel>> _fetchTags(int pageNumber) async =>
       api.tag.getByPage(pageNumber);
 }

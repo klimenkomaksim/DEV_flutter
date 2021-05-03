@@ -1,3 +1,4 @@
+import 'package:dev_flutter/models/podcast_preview_model.dart';
 import 'package:dev_flutter/services/api.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
@@ -30,6 +31,6 @@ class PodcastFeedScreen extends StatelessWidget {
       imageUrl: podcast.podcastImageUrl,
       podcastName: podcast.podcastTitle);
 
-  Future<dynamic> _fetchPodcasts(int pageNumber) =>
+  Future<List<PodcastPreviewModel>> _fetchPodcasts(int pageNumber) =>
       api.podcast.getByPage(pageNumber);
 }

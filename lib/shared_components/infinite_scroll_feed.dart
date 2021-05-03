@@ -5,7 +5,7 @@ import 'centered_spinner.dart';
 import 'error_message.dart';
 
 class InfiniteScrollFeed extends StatefulWidget {
-  final Future<dynamic> Function(int) request;
+  final Future<List<dynamic>> Function(int) request;
   final Widget? fakeElement;
   final ValueWidgetBuilder<dynamic> elementBuilder;
   final int fakeItemsCount;

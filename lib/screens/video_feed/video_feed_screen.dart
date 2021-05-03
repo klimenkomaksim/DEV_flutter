@@ -1,3 +1,4 @@
+import 'package:dev_flutter/models/video_preview_model.dart';
 import 'package:dev_flutter/services/api.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
@@ -34,6 +35,6 @@ class VideoFeedScreen extends StatelessWidget {
           author: video.author,
           imageUrl: video.videoPrevieImageUrl);
 
-  Future<dynamic> _fetchVideos(int pageNumber) async =>
+  Future<List<VideoPreviewModel>> _fetchVideos(int pageNumber) async =>
       api.video.getByPage(pageNumber);
 }

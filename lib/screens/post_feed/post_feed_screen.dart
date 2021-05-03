@@ -1,6 +1,7 @@
 import 'package:dev_flutter/services/api.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
+import 'package:dev_flutter/models/post_preview_model.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:flutter/material.dart';
@@ -31,15 +32,17 @@ class PostFeedScreen extends StatelessWidget {
     );
   }
 
-  Future<dynamic> Function(int) _getRequestCallback(String? tagName) =>
+  Future<List<PostPreviewModel>> Function(int) _getRequestCallback(
+          String? tagName) =>
       tagName == null ? _fetchPosts : _getFetchByTagCallback(tagName);
 
-  Future<dynamic> Function(int) _getFetchByTagCallback(String tagName) =>
+  Future<List<PostPreviewModel>> Function(int) _getFetchByTagCallback(
+          String tagName) =>
       (pageNumber) async {
         return api.article.getByTagAndPage(tagName, pageNumber);
       };
 
-  Future<dynamic> _fetchPosts(int pageNumber) async =>
+  Future<List<PostPreviewModel>> _fetchPosts(int pageNumber) async =>
       api.article.getByPage(pageNumber);
 
   Widget _postPreviewBuilder(context, dynamic post, _) => PostPreview(
