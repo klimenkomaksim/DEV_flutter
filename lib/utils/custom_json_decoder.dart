@@ -33,12 +33,3 @@ class CustomJsonDecoder {
   List<T> _decodeList<T>(Iterable<dynamic> values) =>
       values.where((v) => v != null).map<T>((v) => decode<T>(v) as T).toList();
 }
-
-// Map<String, dynamic> enumToMap(dynamic object) {
-//   return {'': object.toString()};
-// }
-
-// T? enumFromMap<T>(Map<String, dynamic> map, List<T?> values) {
-//   return values.firstWhere((type) => type.toString() == map.values.first,
-//       orElse: () => null);
-// }
