@@ -1,23 +1,45 @@
+import 'package:dev_flutter/services/api.dart';
+import 'package:dev_flutter/shared_components/centered_spinner.dart';
+import 'package:dev_flutter/shared_components/error_message.dart';
 import 'package:flutter/material.dart';
-import 'package:dev_flutter/temporary/post_data.dart';
+import 'package:get_it/get_it.dart';
 
 import 'components/post.dart';
 
 class PostScreen extends StatelessWidget {
-  const PostScreen({Key? key}) : super(key: key);
+  PostScreen({Key? key}) : super(key: key);
+
+  final API api = GetIt.I.get<API>();
 
   @override
   Widget build(BuildContext context) {
+    final id = ModalRoute.of(context)!.settings.arguments as int;
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(),
-        body: Post(
-            title: postData.title,
-            coverImageUrl: postData.coverImageUrl,
-            tags: postData.tags,
-            username: postData.username,
-            data: postData.data,
-            publishDate: postData.publishDate,
-            profileImageUrl: postData.profileImage));
+        body: FutureBuilder(
+          builder: _postBuilder,
+          future: api.article.getById(id),
+        ));
+  }
+
+  Widget _postBuilder(context, AsyncSnapshot<dynamic> snapshot) {
+    if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+      return Post(
+          title: snapshot.data.title,
+          coverImageUrl: snapshot.data.coverImageUrl,
+          tags: snapshot.data.tags,
+          username: snapshot.data.username,
+          data: snapshot.data.data,
+          publishDate: snapshot.data.publishDate,
+          profileImageUrl: snapshot.data.profileImage);
+    }
+
+    if (snapshot.hasError) {
+      return const ErrorMessage();
+    }
+
+    return const CenteredSpinner();
   }
 }

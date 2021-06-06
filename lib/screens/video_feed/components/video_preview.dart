@@ -14,7 +14,12 @@ class VideoPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(alignment: AlignmentDirectional.bottomEnd, children: [
-      Image(image: NetworkImage(imageUrl)),
+      ConstrainedBox(
+        constraints: const BoxConstraints(maxHeight: 270),
+        child: Image(
+          image: NetworkImage(imageUrl),
+        ),
+      ),
       Container(
           padding: const EdgeInsets.fromLTRB(5, 2, 5, 3),
           margin: const EdgeInsets.only(bottom: 10, right: 6),

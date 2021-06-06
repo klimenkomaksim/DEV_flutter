@@ -34,6 +34,9 @@ class PostPreviewModel {
 
   Map<String, dynamic> toJson() => _$PostPreviewModelToJson(this);
 
+  static PostPreviewModel Function(Map<String, dynamic>) fromJsonFactory =
+      _$PostPreviewModelFromJson;
+
   String get username => user?.username ?? '';
   String get profileImage => user?.profileImage ?? '';
 }

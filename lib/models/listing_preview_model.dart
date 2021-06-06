@@ -30,6 +30,9 @@ class ListingPreviewModel {
   factory ListingPreviewModel.fromJson(Map<String, dynamic> json) =>
       _$ListingPreviewModelFromJson(json);
 
+  static ListingPreviewModel Function(Map<String, dynamic>) fromJsonFactory =
+      _$ListingPreviewModelFromJson;
+
   Map<String, dynamic> toJson() => _$ListingPreviewModelToJson(this);
 
   String get username => user?.username ?? '';

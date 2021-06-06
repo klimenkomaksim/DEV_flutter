@@ -23,6 +23,9 @@ class TagModel {
 
   Map<String, dynamic> toJson() => _$TagModelToJson(this);
 
+  static TagModel Function(Map<String, dynamic>) fromJsonFactory =
+      _$TagModelFromJson;
+
   Color get backgroundColor => formatColor(backgroundColorHex);
   Color get textColor => formatColor(textColorHex);
 

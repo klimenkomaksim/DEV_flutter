@@ -37,6 +37,9 @@ class PostModel extends PostPreviewModel {
   factory PostModel.fromJson(Map<String, dynamic> json) =>
       _$PostModelFromJson(json);
 
+  static PostModel Function(Map<String, dynamic>) fromJsonFactory =
+      _$PostModelFromJson;
+
   @override
   Map<String, dynamic> toJson() => _$PostModelToJson(this);
 
