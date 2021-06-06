@@ -1,4 +1,4 @@
-import 'package:dev_flutter/bloc/article/article_bloc.dart';
+import 'package:dev_flutter/bloc/main_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,13 +76,13 @@ class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
         return const ErrorMessage();
       }
 
-      if (state is Loaded) {
+      if (state is LoadedFeed) {
         return _getFeedWidget();
       }
 
       return const ErrorMessage();
     }, listener: (ctx, state) {
-      if (state is Loaded) {
+      if (state is LoadedFeed) {
         setState(() {
           data.addAll(state.data);
           pageNumber += 1;

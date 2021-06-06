@@ -1,4 +1,4 @@
-import 'package:dev_flutter/bloc/article/article_bloc.dart';
+import 'package:dev_flutter/bloc/main_bloc.dart';
 import 'package:dev_flutter/screens/tag_feed/components/fake_tag_card.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';

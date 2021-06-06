@@ -5,8 +5,8 @@ import 'package:dev_flutter/services/api.dart';
 import 'package:dev_flutter/services/base.dart';
 import 'package:meta/meta.dart';
 
-part 'article_event.dart';
-part 'article_state.dart';
+part 'bloc_event.dart';
+part 'bloc_state.dart';
 
 class MainBloc extends Bloc<BlocEvent, BlocState> {
   final API api;
@@ -32,6 +32,8 @@ class MainBloc extends Bloc<BlocEvent, BlocState> {
       state = await _getDataByPage(api.video, event.pageNumber);
     } else if (event is GetArticlesByTag) {
       state = await _getArticlesByTag(event.pageNumber, event.tagName);
+    } else if (event is GetArticleById) {
+      state = await _getArticlesById(event.id);
     } else if (event is ClearState) {
       state = const Initial();
     }
@@ -44,7 +46,7 @@ class MainBloc extends Bloc<BlocEvent, BlocState> {
     try {
       final data = await service.getByPage(pageNumber);
 
-      return Loaded(data);
+      return LoadedFeed(data);
     } catch (e) {
       return const Error();
     }
@@ -54,7 +56,17 @@ class MainBloc extends Bloc<BlocEvent, BlocState> {
     try {
       final articles = await api.article.getByTagAndPage(tagName, pageNumber);
 
-      return Loaded(articles);
+      return LoadedFeed(articles);
+    } catch (e) {
+      return const Error();
+    }
+  }
+
+  Future<BlocState> _getArticlesById(int id) async {
+    try {
+      final article = await api.article.getById(id);
+
+      return LoadedItem(article);
     } catch (e) {
       return const Error();
     }

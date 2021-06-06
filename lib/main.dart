@@ -1,9 +1,8 @@
-import 'package:dev_flutter/bloc/article/article_bloc.dart';
+import 'package:dev_flutter/bloc/main_bloc.dart';
 import 'package:dev_flutter/consts/app_routes.dart';
 import 'package:dev_flutter/services/api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 
 import 'screens/listing_feed/listing_feed_screen.dart';
 import 'screens/podcast_feed/podcast_feed_screen.dart';
@@ -15,7 +14,6 @@ import 'theme.dart';
 
 void main() {
   final api = API(url: 'dev.to');
-  GetIt.I.registerSingleton(api);
   final blocProvider = BlocProvider(
     create: (ctx) => MainBloc(api),
     child: const MyApp(),
@@ -41,7 +39,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.podcastFeedPage: (context) => const PodcastFeedScreen(),
         AppRoutes.videoFeedPage: (context) => const VideoFeedScreen(),
         AppRoutes.tagFeedPage: (context) => const TagFeedScreen(),
-        AppRoutes.postPage: (context) => PostScreen()
+        AppRoutes.postPage: (context) => const PostScreen()
       },
     );
   }

@@ -1,4 +1,4 @@
-part of 'article_bloc.dart';
+part of 'main_bloc.dart';
 
 @immutable
 abstract class BlocEvent {
@@ -18,11 +18,11 @@ class GetArticlesByTag extends BlocEvent {
   const GetArticlesByTag(this.pageNumber, this.tagName);
 }
 
-// class GetArticle extends BlocEvent {
-//   final int pageNumber;
+class GetArticleById extends BlocEvent {
+  final int id;
 
-//   const GetArticle(this.pageNumber);
-// }
+  const GetArticleById(this.id);
+}
 
 class GetListings extends BlocEvent {
   final int pageNumber;

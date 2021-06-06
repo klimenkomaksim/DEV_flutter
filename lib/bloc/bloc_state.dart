@@ -1,4 +1,4 @@
-part of 'article_bloc.dart';
+part of 'main_bloc.dart';
 
 @immutable
 abstract class BlocState {
@@ -17,8 +17,14 @@ class Loading extends BlocState {
   const Loading();
 }
 
-class Loaded extends BlocState {
+class LoadedFeed extends BlocState {
   final List<dynamic> data;
 
-  const Loaded(this.data) : super();
+  const LoadedFeed(this.data) : super();
+}
+
+class LoadedItem extends BlocState {
+  final dynamic data;
+
+  const LoadedItem(this.data) : super();
 }
