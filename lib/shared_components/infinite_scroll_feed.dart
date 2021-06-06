@@ -1,18 +1,22 @@
+import 'package:dev_flutter/bloc/article/article_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'centered_spinner.dart';
 import 'error_message.dart';
 
 class InfiniteScrollFeed extends StatefulWidget {
-  final Future<List<dynamic>> Function(int) request;
+  // final ValueSetter<int> requestEvent;
+  final Function eventCreator;
   final Widget? fakeElement;
   final ValueWidgetBuilder<dynamic> elementBuilder;
   final int fakeItemsCount;
 
   const InfiniteScrollFeed({
-    required this.request,
+    // required this.requestEvent,
     required this.elementBuilder,
+    required this.eventCreator,
     this.fakeElement,
     this.fakeItemsCount = 0,
     Key? key,
@@ -25,74 +29,66 @@ class InfiniteScrollFeed extends StatefulWidget {
 class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
   static const _nextPageThreshold = 5;
   int pageNumber = 1;
-  bool isLoading = false;
-  bool hasError = false;
   List<dynamic> data = [];
+
+  void _fetchData({bool initialLoad = false}) {
+    final bloc = BlocProvider.of<MainBloc>(context);
+
+    if (initialLoad) {
+      bloc.add(const ClearState());
+    }
+
+    final event = widget.eventCreator(pageNumber);
+    bloc.add(event);
+  }
+
+  void _refreshData() {
+    setState(() {
+      pageNumber = 1;
+    });
+
+    _fetchData();
+  }
 
   @override
   void initState() {
     super.initState();
 
-    isLoading = true;
-    _fetchData();
+    _fetchData(initialLoad: true);
   }
 
-  Future<dynamic> _fetchData() async {
-    try {
-      final response = await widget.request(pageNumber);
+  @override
+  void deactivate() {
+    super.deactivate();
 
-      if (response.isEmpty) {
-        return setState(() {
-          isLoading = false;
-          hasError = true;
-        });
-      }
-
-      setState(() {
-        data.addAll(response);
-        pageNumber += 1;
-        isLoading = false;
-      });
-    } catch (e) {
-      setState(() {
-        isLoading = false;
-        hasError = true;
-      });
-    }
-  }
-
-  Future<void> _refreshData() async {
-    setState(() {
-      isLoading = true;
-      pageNumber = 1;
-    });
-    await _fetchData();
+    final bloc = BlocProvider.of<MainBloc>(context);
+    bloc.add(const ClearState());
   }
 
   @override
   Widget build(BuildContext context) {
-    if (hasError && data.isEmpty) {
+    return BlocConsumer<MainBloc, BlocState>(builder: (ctx, state) {
+      if (state is Initial) {
+        return _getLoadinWidget();
+      }
+
+      if (state is Error) {
+        return const ErrorMessage();
+      }
+
+      if (state is Loaded) {
+        return _getFeedWidget();
+      }
+
       return const ErrorMessage();
-    }
-
-    if (isLoading) {
-      return _getLoadinWidget();
-    }
-
-    return RefreshIndicator(
-      onRefresh: _refreshData,
-      child: ListView.builder(
-          itemBuilder: (context, index) {
-            if (index == data.length - _nextPageThreshold) {
-              _fetchData();
-            }
-
-            final item = data[index];
-
-            return widget.elementBuilder(context, item, null);
-          },
-          itemCount: data.length),
-    );
+    }, listener: (ctx, state) {
+      if (state is Loaded) {
+        setState(() {
+          data.addAll(state.data);
+          pageNumber += 1;
+        });
+      }
+    });
   }
 
   Widget _getLoadinWidget() {
@@ -105,5 +101,22 @@ class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
     }
 
     return const CenteredSpinner();
+  }
+
+  RefreshIndicator _getFeedWidget() {
+    return RefreshIndicator(
+      onRefresh: () async => _refreshData,
+      child: ListView.builder(
+          itemBuilder: (context, index) {
+            if (index == data.length - _nextPageThreshold) {
+              _fetchData();
+            }
+
+            final item = data[index];
+
+            return widget.elementBuilder(context, item, null);
+          },
+          itemCount: data.length),
+    );
   }
 }

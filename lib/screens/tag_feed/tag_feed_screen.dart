@@ -1,19 +1,15 @@
-import 'package:dev_flutter/models/tag_model.dart';
+import 'package:dev_flutter/bloc/article/article_bloc.dart';
 import 'package:dev_flutter/screens/tag_feed/components/fake_tag_card.dart';
-import 'package:dev_flutter/services/api.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 
 import 'components/tag_card.dart';
 
 class TagFeedScreen extends StatelessWidget {
-  TagFeedScreen({
+  const TagFeedScreen({
     Key? key,
   }) : super(key: key);
-
-  final API api = GetIt.I.get<API>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +17,9 @@ class TagFeedScreen extends StatelessWidget {
       title: 'Tags',
       child: InfiniteScrollFeed(
         elementBuilder: _tagCardBuilder,
-        request: _fetchTags,
         fakeElement: const FakeTagCard(),
         fakeItemsCount: 8,
+        eventCreator: _getRequestEvent,
       ),
     );
   }
@@ -31,6 +27,5 @@ class TagFeedScreen extends StatelessWidget {
   Widget _tagCardBuilder(context, dynamic tag, _) =>
       TagCard(tagColor: tag.backgroundColor, tagName: tag.name);
 
-  Future<List<TagModel>> _fetchTags(int pageNumber) async =>
-      api.tag.getByPage(pageNumber);
+  BlocEvent _getRequestEvent(int pageNumber) => GetTags(pageNumber);
 }
