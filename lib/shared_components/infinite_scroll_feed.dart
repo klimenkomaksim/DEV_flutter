@@ -103,6 +103,7 @@ class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
 
   RefreshIndicator _getFeedWidget() {
     return RefreshIndicator(
+      // dirty hack
       onRefresh: () async => _refreshData,
       child: ListView.builder(
           itemBuilder: (context, index) {
