@@ -7,14 +7,12 @@ import 'centered_spinner.dart';
 import 'error_message.dart';
 
 class InfiniteScrollFeed extends StatefulWidget {
-  // final ValueSetter<int> requestEvent;
   final Function eventCreator;
   final Widget? fakeElement;
   final ValueWidgetBuilder<dynamic> elementBuilder;
   final int fakeItemsCount;
 
   const InfiniteScrollFeed({
-    // required this.requestEvent,
     required this.elementBuilder,
     required this.eventCreator,
     this.fakeElement,

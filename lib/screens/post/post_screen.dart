@@ -19,7 +19,7 @@ class PostScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(),
       body: BlocBuilder<PostBloc, PostState>(builder: (ctx, state) {
-        if (state is PostInitial) {
+        if (state is PostInitial || state is PostLoading) {
           return const CenteredSpinner();
         }
 
@@ -31,7 +31,7 @@ class PostScreen extends StatelessWidget {
           return _postBuilder(state.data);
         }
 
-        return const CenteredSpinner();
+        return const ErrorMessage();
       }),
     );
   }
