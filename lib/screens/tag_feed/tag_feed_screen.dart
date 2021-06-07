@@ -1,4 +1,4 @@
-import 'package:dev_flutter/bloc/main_bloc.dart';
+import 'package:dev_flutter/bloc/feed/feed_bloc.dart';
 import 'package:dev_flutter/screens/tag_feed/components/fake_tag_card.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
@@ -27,5 +27,5 @@ class TagFeedScreen extends StatelessWidget {
   Widget _tagCardBuilder(context, dynamic tag, _) =>
       TagCard(tagColor: tag.backgroundColor, tagName: tag.name);
 
-  BlocEvent _getRequestEvent(int pageNumber) => GetTags(pageNumber);
+  FeedEvent _getRequestEvent(int pageNumber) => GetTags(pageNumber);
 }

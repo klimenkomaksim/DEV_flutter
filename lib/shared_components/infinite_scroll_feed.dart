@@ -1,4 +1,4 @@
-import 'package:dev_flutter/bloc/main_bloc.dart';
+import 'package:dev_flutter/bloc/feed/feed_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +32,7 @@ class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
   List<dynamic> data = [];
 
   void _fetchData({bool initialLoad = false}) {
-    final bloc = BlocProvider.of<MainBloc>(context);
+    final bloc = BlocProvider.of<FeedBloc>(context);
 
     if (initialLoad) {
       bloc.add(const ClearState());
@@ -61,18 +61,18 @@ class _InfiniteScrollFeedState extends State<InfiniteScrollFeed> {
   void deactivate() {
     super.deactivate();
 
-    final bloc = BlocProvider.of<MainBloc>(context);
+    final bloc = BlocProvider.of<FeedBloc>(context);
     bloc.add(const ClearState());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MainBloc, BlocState>(builder: (ctx, state) {
-      if (state is Initial) {
+    return BlocConsumer<FeedBloc, FeedState>(builder: (ctx, state) {
+      if (state is FeedInitial) {
         return _getLoadinWidget();
       }
 
-      if (state is Error) {
+      if (state is FeedError) {
         return const ErrorMessage();
       }
 

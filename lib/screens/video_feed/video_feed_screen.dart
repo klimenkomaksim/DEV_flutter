@@ -1,4 +1,4 @@
-import 'package:dev_flutter/bloc/main_bloc.dart';
+import 'package:dev_flutter/bloc/feed/feed_bloc.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
 import 'package:flutter/material.dart';
@@ -31,5 +31,5 @@ class VideoFeedScreen extends StatelessWidget {
           author: video.author,
           imageUrl: video.videoPrevieImageUrl);
 
-  BlocEvent _getRequestEvent(int pageNumber) => GetVideos(pageNumber);
+  FeedEvent _getRequestEvent(int pageNumber) => GetVideos(pageNumber);
 }

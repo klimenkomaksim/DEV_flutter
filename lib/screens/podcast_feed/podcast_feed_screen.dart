@@ -1,4 +1,4 @@
-import 'package:dev_flutter/bloc/main_bloc.dart';
+import 'package:dev_flutter/bloc/feed/feed_bloc.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
 import 'package:flutter/material.dart';
@@ -27,5 +27,5 @@ class PodcastFeedScreen extends StatelessWidget {
       imageUrl: podcast.podcastImageUrl,
       podcastName: podcast.podcastTitle);
 
-  BlocEvent _getRequestEvent(int pageNumber) => GetPodcasts(pageNumber);
+  FeedEvent _getRequestEvent(int pageNumber) => GetPodcasts(pageNumber);
 }

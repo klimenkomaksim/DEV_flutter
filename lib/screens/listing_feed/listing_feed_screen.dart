@@ -1,4 +1,4 @@
-import 'package:dev_flutter/bloc/main_bloc.dart';
+import 'package:dev_flutter/bloc/feed/feed_bloc.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
 
@@ -20,7 +20,7 @@ class ListingFeedScreen extends StatelessWidget {
             elementBuilder: _listingPreviewBuilder));
   }
 
-  BlocEvent _getRequestEvent(int pageNumber) => GetListings(pageNumber);
+  FeedEvent _getRequestEvent(int pageNumber) => GetListings(pageNumber);
 
   Widget _listingPreviewBuilder(context, dynamic listing, _) => ListingPreview(
       title: listing.title,

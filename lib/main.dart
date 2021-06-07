@@ -1,4 +1,5 @@
-import 'package:dev_flutter/bloc/main_bloc.dart';
+import 'package:dev_flutter/bloc/feed/feed_bloc.dart';
+import 'package:dev_flutter/bloc/post/post_bloc.dart';
 import 'package:dev_flutter/consts/app_routes.dart';
 import 'package:dev_flutter/services/api.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,11 @@ import 'theme.dart';
 
 void main() {
   final api = API(url: 'dev.to');
-  final blocProvider = BlocProvider(
-    create: (ctx) => MainBloc(api),
+  final blocProvider = MultiBlocProvider(
+    providers: [
+      BlocProvider<FeedBloc>(create: (ctx) => FeedBloc(api)),
+      BlocProvider<PostBloc>(create: (ctx) => PostBloc(api)),
+    ],
     child: const MyApp(),
   );
 

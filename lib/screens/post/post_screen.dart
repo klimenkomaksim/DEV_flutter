@@ -1,4 +1,4 @@
-import 'package:dev_flutter/bloc/main_bloc.dart';
+import 'package:dev_flutter/bloc/post/post_bloc.dart';
 import 'package:dev_flutter/models/post_model.dart';
 import 'package:dev_flutter/shared_components/centered_spinner.dart';
 import 'package:dev_flutter/shared_components/error_message.dart';
@@ -18,16 +18,16 @@ class PostScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(),
-      body: BlocBuilder<MainBloc, BlocState>(builder: (ctx, state) {
-        if (state is Initial) {
+      body: BlocBuilder<PostBloc, PostState>(builder: (ctx, state) {
+        if (state is PostInitial) {
           return const CenteredSpinner();
         }
 
-        if (state is Error) {
+        if (state is PostError) {
           return const ErrorMessage();
         }
 
-        if (state is LoadedItem) {
+        if (state is PostLoaded) {
           return _postBuilder(state.data);
         }
 
@@ -48,7 +48,7 @@ class PostScreen extends StatelessWidget {
   }
 
   void _loadArticle(BuildContext ctx, int id) {
-    final bloc = BlocProvider.of<MainBloc>(ctx);
+    final bloc = BlocProvider.of<PostBloc>(ctx);
     bloc.add(GetArticleById(id));
   }
 }
