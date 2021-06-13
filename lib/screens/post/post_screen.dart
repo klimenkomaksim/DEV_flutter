@@ -1,45 +1,54 @@
-import 'package:dev_flutter/services/api.dart';
+import 'package:dev_flutter/bloc/post/post_bloc.dart';
+import 'package:dev_flutter/models/post_model.dart';
 import 'package:dev_flutter/shared_components/centered_spinner.dart';
 import 'package:dev_flutter/shared_components/error_message.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'components/post.dart';
 
 class PostScreen extends StatelessWidget {
-  PostScreen({Key? key}) : super(key: key);
-
-  final API api = GetIt.I.get<API>();
+  const PostScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)!.settings.arguments as int;
+    _loadArticle(context, id);
 
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(),
-        body: FutureBuilder(
-          builder: _postBuilder,
-          future: api.article.getById(id),
-        ));
+      backgroundColor: Colors.white,
+      appBar: AppBar(),
+      body: BlocBuilder<PostBloc, PostState>(builder: (ctx, state) {
+        if (state is PostInitial || state is PostLoading) {
+          return const CenteredSpinner();
+        }
+
+        if (state is PostError) {
+          return const ErrorMessage();
+        }
+
+        if (state is PostLoaded) {
+          return _postBuilder(state.data);
+        }
+
+        return const ErrorMessage();
+      }),
+    );
   }
 
-  Widget _postBuilder(context, AsyncSnapshot<dynamic> snapshot) {
-    if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-      return Post(
-          title: snapshot.data.title,
-          coverImageUrl: snapshot.data.coverImageUrl,
-          tags: snapshot.data.tags,
-          username: snapshot.data.username,
-          data: snapshot.data.data,
-          publishDate: snapshot.data.publishDate,
-          profileImageUrl: snapshot.data.profileImage);
-    }
+  Widget _postBuilder(PostModel data) {
+    return Post(
+        title: data.title,
+        coverImageUrl: data.coverImageUrl,
+        tags: data.tags,
+        username: data.username,
+        data: data.data,
+        publishDate: data.publishDate,
+        profileImageUrl: data.profileImage);
+  }
 
-    if (snapshot.hasError) {
-      return const ErrorMessage();
-    }
-
-    return const CenteredSpinner();
+  void _loadArticle(BuildContext ctx, int id) {
+    final bloc = BlocProvider.of<PostBloc>(ctx);
+    bloc.add(GetArticleById(id));
   }
 }

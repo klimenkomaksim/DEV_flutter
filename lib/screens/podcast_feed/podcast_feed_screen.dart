@@ -1,26 +1,22 @@
-import 'package:dev_flutter/models/podcast_preview_model.dart';
-import 'package:dev_flutter/services/api.dart';
+import 'package:dev_flutter/bloc/feed/feed_bloc.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 
 import 'components/fake_podcast_preview.dart';
 import 'components/podcast_preview.dart';
 
 class PodcastFeedScreen extends StatelessWidget {
-  PodcastFeedScreen({
+  const PodcastFeedScreen({
     Key? key,
   }) : super(key: key);
-
-  final API api = GetIt.I.get<API>();
 
   @override
   Widget build(BuildContext context) {
     return AppSkeleton(
         title: 'Podcast',
         child: InfiniteScrollFeed(
-            request: _fetchPodcasts,
+            eventCreator: _getRequestEvent,
             fakeElement: const FakePodcastPreview(),
             elementBuilder: _podcastPreviewBuilder,
             fakeItemsCount: 10));
@@ -31,6 +27,5 @@ class PodcastFeedScreen extends StatelessWidget {
       imageUrl: podcast.podcastImageUrl,
       podcastName: podcast.podcastTitle);
 
-  Future<List<PodcastPreviewModel>> _fetchPodcasts(int pageNumber) =>
-      api.podcast.getByPage(pageNumber);
+  FeedEvent _getRequestEvent(int pageNumber) => GetPodcasts(pageNumber);
 }

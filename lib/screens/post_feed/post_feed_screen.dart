@@ -1,8 +1,6 @@
-import 'package:dev_flutter/services/api.dart';
+import 'package:dev_flutter/bloc/feed/feed_bloc.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
-import 'package:dev_flutter/models/post_preview_model.dart';
-import 'package:get_it/get_it.dart';
 
 import 'package:flutter/material.dart';
 
@@ -10,40 +8,31 @@ import 'components/fake_post_preview.dart';
 import 'components/post_preview.dart';
 
 class PostFeedScreen extends StatelessWidget {
-  PostFeedScreen({
+  const PostFeedScreen({
     Key? key,
   }) : super(key: key);
-
-  final API api = GetIt.I.get<API>();
 
   @override
   Widget build(BuildContext context) {
     final tagName = ModalRoute.of(context)!.settings.arguments as String?;
-    final requestCallback = _getRequestCallback(tagName);
 
     return AppSkeleton(
-      title: tagName ?? 'Feed',
-      child: InfiniteScrollFeed(
-        elementBuilder: _postPreviewBuilder,
-        fakeElement: const FakePostPreview(),
-        fakeItemsCount: 6,
-        request: requestCallback,
-      ),
-    );
+        title: tagName ?? 'Feed',
+        child: InfiniteScrollFeed(
+          elementBuilder: _postPreviewBuilder,
+          fakeElement: const FakePostPreview(),
+          fakeItemsCount: 6,
+          eventCreator: _getEventCreator(tagName),
+        ));
   }
 
-  Future<List<PostPreviewModel>> Function(int) _getRequestCallback(
-          String? tagName) =>
-      tagName == null ? _fetchPosts : _getFetchByTagCallback(tagName);
+  ValueSetter<int> _getEventCreator(String? tagName) =>
+      tagName == null ? _getArticles : _getArticlesByTag(tagName);
 
-  Future<List<PostPreviewModel>> Function(int) _getFetchByTagCallback(
-          String tagName) =>
-      (pageNumber) async {
-        return api.article.getByTagAndPage(tagName, pageNumber);
-      };
+  FeedEvent _getArticles(int pageNumber) => GetArticles(pageNumber);
 
-  Future<List<PostPreviewModel>> _fetchPosts(int pageNumber) async =>
-      api.article.getByPage(pageNumber);
+  ValueSetter<int> _getArticlesByTag(String tagName) =>
+      (pageNumber) => GetArticlesByTag(pageNumber, tagName);
 
   Widget _postPreviewBuilder(context, dynamic post, _) => PostPreview(
       username: post.username,
