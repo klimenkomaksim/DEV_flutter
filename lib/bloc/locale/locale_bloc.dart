@@ -19,6 +19,5 @@ class LocaleBloc extends Bloc<LocaleEvent, LocaleState> {
 
       yield CurrentLocale(supportedLocales[event.index], event.index);
     }
-    // AppLocalizations.supportedLocales
   }
 }
