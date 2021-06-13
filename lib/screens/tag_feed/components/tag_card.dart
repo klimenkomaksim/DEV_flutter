@@ -3,6 +3,7 @@ import 'package:dev_flutter/consts/border_radius.dart';
 import 'package:dev_flutter/consts/borders.dart';
 import 'package:dev_flutter/shared_components/button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'tag_title.dart';
 
@@ -51,7 +52,7 @@ class _TagCardBody extends StatelessWidget {
             children: [
               TagTitle(tagName: tagName),
               Button(
-                  title: 'Open',
+                  title: AppLocalizations.of(context)!.open,
                   onPressed: () {
                     Navigator.pushNamed(context, AppRoutes.postFeedPage,
                         arguments: tagName);

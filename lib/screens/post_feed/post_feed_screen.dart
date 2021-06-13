@@ -3,6 +3,7 @@ import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'components/fake_post_preview.dart';
 import 'components/post_preview.dart';
@@ -15,9 +16,10 @@ class PostFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tagName = ModalRoute.of(context)!.settings.arguments as String?;
+    final feedKey = AppLocalizations.of(context)!.feed;
 
     return AppSkeleton(
-        title: tagName ?? 'Feed',
+        title: tagName ?? feedKey,
         child: InfiniteScrollFeed(
           elementBuilder: _postPreviewBuilder,
           fakeElement: const FakePostPreview(),

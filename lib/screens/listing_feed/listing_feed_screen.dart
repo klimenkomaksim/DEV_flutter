@@ -3,6 +3,7 @@ import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'components/listing_preview.dart';
 
@@ -14,7 +15,7 @@ class ListingFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppSkeleton(
-        title: 'Listings',
+        title: AppLocalizations.of(context)!.listings,
         child: InfiniteScrollFeed(
             eventCreator: _getRequestEvent,
             elementBuilder: _listingPreviewBuilder));

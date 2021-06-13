@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_svg: ^0.21.0
   flutter_widget_from_html: ^0.6.0
 
@@ -37,7 +39,7 @@ dependencies:
   flutter_bloc: ^7.0.0
   bloc: ^7.0.0
   chopper: ^4.0.1
-  # swagger_dart_code_generator: ^2.0.5
+  intl: ^0.17.0
 
 
 dev_dependencies:
@@ -51,6 +53,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
