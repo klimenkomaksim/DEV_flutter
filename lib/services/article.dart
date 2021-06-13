@@ -1,33 +1,27 @@
-import 'package:dev_flutter/services/base.dart';
 import 'package:dev_flutter/models/post_model.dart';
 import 'package:dev_flutter/models/post_preview_model.dart';
 
-class Article extends BaseRequestService {
-  static const _endpointPath = 'articles/';
+import 'package:chopper/chopper.dart';
 
-  Article(String url) : super(baseUrl: url, endpointPath: _endpointPath);
+part 'article.chopper.dart';
 
-  @override
-  Future<List<PostPreviewModel>> getByPage(int pageNumber) {
-    final params = {
-      'per_page': '15',
-      'page': pageNumber.toString(),
-    };
+@ChopperApi(baseUrl: '/articles')
+abstract class Article extends ChopperService {
+  static Article create([ChopperClient? client]) => _$Article(client);
 
-    return getAll(params: params);
-  }
+  @Get()
+  Future<Response<List<PostPreviewModel>>> getByPage(
+    @Query('page') int pageNumber, {
+    @Query('per_page') int perPage = 15,
+  });
 
-  Future<List<PostPreviewModel>> getByTagAndPage(String tag, int pageNumber) {
-    final params = {
-      'tag': tag,
-      'per_page': '15',
-      'page': pageNumber.toString(),
-    };
+  @Get()
+  Future<Response<List<PostPreviewModel>>> getByTagAndPage(
+    @Query('page') int pageNumber,
+    @Query() String tag, {
+    @Query('per_page') int perPage = 15,
+  });
 
-    return getAll(params: params);
-  }
-
-  Future<PostModel> getById(int id) async {
-    return get(endpointPath + id.toString());
-  }
+  @Get(path: '/{id}')
+  Future<Response<PostModel>> getById(@Path() int id);
 }
