@@ -1,18 +1,17 @@
+import 'package:chopper/chopper.dart';
 import 'package:dev_flutter/models/podcast_preview_model.dart';
 import 'package:dev_flutter/services/base.dart';
 
-class Podcast extends BaseRequestService {
-  static const _endpointPath = 'podcast_episodes/';
+part 'podcast.chopper.dart';
 
-  Podcast(String url) : super(baseUrl: url, endpointPath: _endpointPath);
+@ChopperApi(baseUrl: '/podcast_episodes')
+abstract class Podcast extends BaseService {
+  static Podcast create([ChopperClient? client]) => _$Podcast(client);
 
+  @Get()
   @override
-  Future<List<PodcastPreviewModel>> getByPage(int pageNumber) {
-    final params = {
-      'per_page': '15',
-      'page': pageNumber.toString(),
-    };
-
-    return getAll(params: params);
-  }
+  Future<Response<List<PodcastPreviewModel>>> getByPage(
+    @Query('page') int pageNumber, {
+    @Query('per_page') int perPage = 15,
+  });
 }

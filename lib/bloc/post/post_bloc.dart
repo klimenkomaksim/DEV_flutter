@@ -19,9 +19,13 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     if (event is GetArticleById) {
       yield const PostLoading();
       try {
-        final article = await api.article.getById(event.id);
+        final response = await api.article.getById(event.id);
 
-        yield PostLoaded(article);
+        if (response.isSuccessful && response.body != null) {
+          yield PostLoaded(response.body!);
+        } else {
+          yield const PostError();
+        }
       } catch (e) {
         yield const PostError();
       }

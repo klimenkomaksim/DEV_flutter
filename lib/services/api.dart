@@ -1,20 +1,34 @@
+import 'package:chopper/chopper.dart';
 import 'package:dev_flutter/services/article.dart';
+import 'package:dev_flutter/services/utils/custom_json_converter.dart';
 import 'package:dev_flutter/services/listing.dart';
 import 'package:dev_flutter/services/podcast.dart';
 import 'package:dev_flutter/services/tag.dart';
 import 'package:dev_flutter/services/video.dart';
 
 class API {
-  Article article;
-  Listing listing;
-  Podcast podcast;
-  Tag tag;
-  Video video;
+  ChopperClient chopper;
 
   API({required String url})
-      : article = Article(url),
-        listing = Listing(url),
-        podcast = Podcast(url),
-        tag = Tag(url),
-        video = Video(url);
+      : chopper = ChopperClient(
+          baseUrl: url,
+          services: [
+            Article.create(),
+            Listing.create(),
+            Podcast.create(),
+            Tag.create(),
+            Video.create(),
+          ],
+          converter: CustomJsonConverter(),
+        );
+
+  Article get article => chopper.getService<Article>();
+
+  Listing get listing => chopper.getService<Listing>();
+
+  Podcast get podcast => chopper.getService<Podcast>();
+
+  Tag get tag => chopper.getService<Tag>();
+
+  Video get video => chopper.getService<Video>();
 }

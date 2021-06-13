@@ -1,18 +1,17 @@
+import 'package:chopper/chopper.dart';
 import 'package:dev_flutter/models/video_preview_model.dart';
 import 'package:dev_flutter/services/base.dart';
 
-class Video extends BaseRequestService {
-  static const _endpointPath = 'videos/';
+part 'video.chopper.dart';
 
-  Video(String url) : super(baseUrl: url, endpointPath: _endpointPath);
+@ChopperApi(baseUrl: '/videos')
+abstract class Video extends BaseService {
+  static Video create([ChopperClient? client]) => _$Video(client);
 
+  @Get()
   @override
-  Future<List<VideoPreviewModel>> getByPage(int pageNumber) {
-    final params = {
-      'per_page': '15',
-      'page': pageNumber.toString(),
-    };
-
-    return getAll(params: params);
-  }
+  Future<Response<List<VideoPreviewModel>>> getByPage(
+    @Query('page') int pageNumber, {
+    @Query('per_page') int perPage = 15,
+  });
 }

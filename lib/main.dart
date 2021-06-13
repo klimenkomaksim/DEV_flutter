@@ -14,7 +14,7 @@ import 'screens/video_feed/video_feed_screen.dart';
 import 'theme.dart';
 
 void main() {
-  final api = API(url: 'dev.to');
+  final api = API(url: 'https://dev.to/api');
   final blocProvider = MultiBlocProvider(
     providers: [
       BlocProvider<FeedBloc>(create: (ctx) => FeedBloc(api)),
