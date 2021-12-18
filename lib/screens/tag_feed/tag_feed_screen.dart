@@ -3,6 +3,7 @@ import 'package:dev_flutter/screens/tag_feed/components/fake_tag_card.dart';
 import 'package:dev_flutter/shared_components/app_skeleton.dart';
 import 'package:dev_flutter/shared_components/infinite_scroll_feed.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'components/tag_card.dart';
 
@@ -14,7 +15,7 @@ class TagFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppSkeleton(
-      title: 'Tags',
+      title: AppLocalizations.of(context)!.tags,
       child: InfiniteScrollFeed(
         elementBuilder: _tagCardBuilder,
         fakeElement: const FakeTagCard(),

@@ -1,18 +1,17 @@
+import 'package:chopper/chopper.dart';
 import 'package:dev_flutter/models/tag_model.dart';
 import 'package:dev_flutter/services/base.dart';
 
-class Tag extends BaseRequestService {
-  static const _endpointPath = 'tags/';
+part 'tag.chopper.dart';
 
-  Tag(String url) : super(baseUrl: url, endpointPath: _endpointPath);
+@ChopperApi(baseUrl: '/tags')
+abstract class Tag extends BaseService {
+  static Tag create([ChopperClient? client]) => _$Tag(client);
 
+  @Get()
   @override
-  Future<List<TagModel>> getByPage(int pageNumber) {
-    final params = {
-      'per_page': '15',
-      'page': pageNumber.toString(),
-    };
-
-    return getAll(params: params);
-  }
+  Future<Response<List<TagModel>>> getByPage(
+    @Query('page') int pageNumber, {
+    @Query('per_page') int perPage = 15,
+  });
 }

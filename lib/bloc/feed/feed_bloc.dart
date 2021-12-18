@@ -19,7 +19,6 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
   ) async* {
     FeedState state = const FeedError();
 
-    // couldn't figure out how to use switch/case in this place
     if (event is GetArticles) {
       state = await _getDataByPage(api.article, event.pageNumber);
     } else if (event is GetListings) {
@@ -39,12 +38,15 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     yield state;
   }
 
-  Future<FeedState> _getDataByPage(
-      BaseRequestService service, int pageNumber) async {
+  Future<FeedState> _getDataByPage(BaseService service, int pageNumber) async {
     try {
-      final data = await service.getByPage(pageNumber);
+      final response = await service.getByPage(pageNumber);
 
-      return LoadedFeed(data);
+      if (response.isSuccessful && response.body != null) {
+        return LoadedFeed(response.body!);
+      }
+
+      return const FeedError();
     } catch (e) {
       return const FeedError();
     }
@@ -52,9 +54,13 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
 
   Future<FeedState> _getArticlesByTag(int pageNumber, String tagName) async {
     try {
-      final articles = await api.article.getByTagAndPage(tagName, pageNumber);
+      final response = await api.article.getByTagAndPage(pageNumber, tagName);
 
-      return LoadedFeed(articles);
+      if (response.isSuccessful && response.body != null) {
+        return LoadedFeed(response.body!);
+      }
+
+      return const FeedError();
     } catch (e) {
       return const FeedError();
     }

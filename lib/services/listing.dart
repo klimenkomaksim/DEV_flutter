@@ -1,18 +1,17 @@
+import 'package:chopper/chopper.dart';
 import 'package:dev_flutter/models/listing_preview_model.dart';
 import 'package:dev_flutter/services/base.dart';
 
-class Listing extends BaseRequestService {
-  static const _endpointPath = 'listings/';
+part 'listing.chopper.dart';
 
-  Listing(String url) : super(baseUrl: url, endpointPath: _endpointPath);
+@ChopperApi(baseUrl: '/listings')
+abstract class Listing extends BaseService {
+  static Listing create([ChopperClient? client]) => _$Listing(client);
 
+  @Get()
   @override
-  Future<List<ListingPreviewModel>> getByPage(int pageNumber) {
-    final params = {
-      'per_page': '15',
-      'page': pageNumber.toString(),
-    };
-
-    return getAll(params: params);
-  }
+  Future<Response<List<ListingPreviewModel>>> getByPage(
+    @Query('page') int pageNumber, {
+    @Query('per_page') int perPage = 15,
+  });
 }
